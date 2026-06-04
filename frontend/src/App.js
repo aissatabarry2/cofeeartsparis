@@ -16,6 +16,7 @@ import AdminOrders from './pages/admin/AdminOrders';
 import AdminAteliers from './pages/admin/AdminAteliers';
 import AdminContacts from './pages/admin/AdminContacts';
 import AdminUsers from './pages/admin/AdminUsers';
+import Footer from "./pages/components/Footer";
 
 function AdminRoute({ children }) {
   const { user } = useAuth();
@@ -77,24 +78,76 @@ export default function App() {
     <AuthProvider>
       <CartProvider>
         <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/boutique" element={<Boutique />} />
-            <Route path="/ateliers" element={<Ateliers />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/espace-client" element={<PrivateRoute><ClientSpace /></PrivateRoute>} />
-            <Route path="/admin" element={<AdminRoute><Dashboard /></AdminRoute>} />
-            <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
-            <Route path="/admin/orders" element={<AdminRoute><AdminOrders /></AdminRoute>} />
-            <Route path="/admin/ateliers" element={<AdminRoute><AdminAteliers /></AdminRoute>} />
-            <Route path="/admin/contacts" element={<AdminRoute><AdminContacts /></AdminRoute>} />
-            <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
-          </Routes>
-        </BrowserRouter>
+  <Navbar />
+
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/boutique" element={<Boutique />} />
+    <Route path="/ateliers" element={<Ateliers />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="/cart" element={<Cart />} />
+    <Route
+      path="/espace-client"
+      element={
+        <PrivateRoute>
+          <ClientSpace />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/admin"
+      element={
+        <AdminRoute>
+          <Dashboard />
+        </AdminRoute>
+      }
+    />
+    <Route
+      path="/admin/products"
+      element={
+        <AdminRoute>
+          <AdminProducts />
+        </AdminRoute>
+      }
+    />
+    <Route
+      path="/admin/orders"
+      element={
+        <AdminRoute>
+          <AdminOrders />
+        </AdminRoute>
+      }
+    />
+    <Route
+      path="/admin/ateliers"
+      element={
+        <AdminRoute>
+          <AdminAteliers />
+        </AdminRoute>
+      }
+    />
+    <Route
+      path="/admin/contacts"
+      element={
+        <AdminRoute>
+          <AdminContacts />
+        </AdminRoute>
+      }
+    />
+    <Route
+      path="/admin/users"
+      element={
+        <AdminRoute>
+          <AdminUsers />
+        </AdminRoute>
+      }
+    />
+  </Routes>
+
+  <Footer />
+</BrowserRouter>
       </CartProvider>
     </AuthProvider>
   );
