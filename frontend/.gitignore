@@ -19,3 +19,5 @@ Thumbs.db
 # IDE / Editor
 .vscode/
 .idea/
+/frontend/public/images/public.zip
+
