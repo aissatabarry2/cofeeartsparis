@@ -12,9 +12,13 @@ connectDB();
 //   credentials: true
 // }));
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: "https://ton-frontend.vercel.app",
   credentials: true
 }));
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'http://localhost:3001'],
+//   credentials: true
+// }));
 
 app.use(express.json());
 
