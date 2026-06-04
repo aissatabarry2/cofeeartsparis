@@ -1,0 +1,36 @@
+.users-wrapper {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th {
+  background: #2c1810;
+  color: #fff;
+  padding: 1rem;
+  text-align: left;
+}
+
+.users-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.users-table select {
+  padding: 0.4rem;
+  border-radius: 6px;
+}
+
+.users-table button {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}

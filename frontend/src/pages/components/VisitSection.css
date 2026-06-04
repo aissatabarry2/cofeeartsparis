@@ -1,0 +1,49 @@
+.visit-section {
+  background: #f3f3f3;
+  padding: 90px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visit-container {
+  text-align: center;
+  max-width: 700px;
+}
+
+.visit-title {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #5b5847;
+  margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+.visit-text {
+  font-size: 18px;
+  color: #6f6f6f;
+  margin-bottom: 35px;
+  font-family: "Poppins", sans-serif;
+}
+
+.visit-btn {
+  background: #b7c09c;
+  color: #5b5847;
+  border: none;
+  padding: 18px 42px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.3s ease;
+}
+
+.visit-btn:hover {
+  background: #a9b38d;
+  transform: translateY(-2px);
+}

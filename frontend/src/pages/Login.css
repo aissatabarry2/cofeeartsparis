@@ -1,0 +1,135 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f0;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.login-logo h1 {
+  text-align: center;
+  color: #4a5532;
+  margin-bottom: 1.5rem;
+}
+
+/* TABS */
+.auth-tabs {
+  display: flex;
+  background: #f0f0eb;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #666;
+  font-weight: 500;
+}
+
+.auth-tabs button.active {
+  background: #a8b48f;
+  color: #2c2c2c;
+}
+
+/* FORM */
+.auth-form input {
+  width: 100%;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+
+.password-box {
+  position: relative;
+}
+
+.password-box span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: #4a5532;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* DIVIDER */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.2rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider span {
+  margin: 0 10px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* GOOGLE BTN */
+.google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+}
+
+.google-btn img {
+  width: 18px;
+}
+
+/* FOOTER */
+.switch-text {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.switch-text span {
+  color: #4a5532;
+  font-weight: bold;
+  cursor: pointer;
+}

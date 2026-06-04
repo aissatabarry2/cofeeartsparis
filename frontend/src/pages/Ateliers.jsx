@@ -1,47 +1,57 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./Ateliers.css";
 
 const API = process.env.REACT_APP_API_URL;
 
 export default function Ateliers() {
   const [ateliers, setAteliers] = useState([]);
-  const { user } = useAuth();
+  const [selected, setSelected] = useState(null);
+  const [reserved, setReserved] = useState(false);
 
-  useEffect(() => { axios.get(`${API}/ateliers`).then(r => setAteliers(r.data)).catch(() => {}); }, []);
+  useEffect(() => {
+    axios.get(`${API}/ateliers`).then(res => setAteliers(res.data));
+  }, []);
 
-  const reserver = (a) => {
-    if (!user) return alert('Connectez-vous pour réserver');
-    alert(`✅ Réservation confirmée pour "${a.title}" !`);
+  const handleReserve = async (id) => {
+    try {
+      await axios.post(`${API}/orders`, { atelierId: id });
+      setReserved(true);
+      setTimeout(() => setReserved(false), 3000);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ color: '#2c1810', marginBottom: '0.5rem' }}>Ateliers</h1>
-      <p style={{ color: '#888', marginBottom: '2rem' }}>Céramique, latte art, dégustation…</p>
-      {ateliers.length === 0 ? <p style={{ color: '#888' }}>Aucun atelier disponible pour l'instant.</p> : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          {ateliers.map(a => (
-            <div key={a._id} style={{ background: '#fff', borderRadius: '14px', padding: '1.8rem', boxShadow: '0 2px 15px rgba(0,0,0,0.07)' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '0.8rem' }}>🎨</div>
-              <h3 style={{ color: '#2c1810', marginBottom: '0.5rem' }}>{a.title}</h3>
-              <p style={{ color: '#888', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '1rem' }}>{a.description}</p>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.2rem', fontSize: '0.85rem', color: '#666' }}>
-                <span>📅 {new Date(a.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                <span>👥 {a.placesLeft} places restantes</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#d4a96a', fontWeight: 'bold', fontSize: '1.3rem' }}>{a.price}€</span>
-                <button onClick={() => reserver(a)} style={{
-                  background: a.placesLeft > 0 ? '#2c1810' : '#ccc',
-                  color: '#fff', border: 'none', padding: '0.7rem 1.5rem',
-                  borderRadius: '8px', cursor: a.placesLeft > 0 ? 'pointer' : 'not-allowed', fontSize: '0.9rem'
-                }}>
-                  {a.placesLeft > 0 ? 'Réserver' : 'Complet'}
-                </button>
-              </div>
-            </div>
-          ))}
+    <div className="ateliers-wrapper">
+      <h1>🎨 Nos Ateliers</h1>
+
+      {/* Liste des ateliers */}
+      <div className="ateliers-grid">
+        {ateliers.map(a => (
+          <div key={a._id} className="atelier-card" onClick={() => setSelected(a)}>
+            <h3>{a.title}</h3>
+            <p>{new Date(a.date).toLocaleDateString("fr-FR")} — {new Date(a.date).toLocaleTimeString("fr-FR", {hour: "2-digit", minute: "2-digit"})}</p>
+            <p><strong>{a.price} €</strong></p>
+            <p>Places restantes : {a.placesLeft}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Détails d’un atelier */}
+      {selected && (
+        <div className="atelier-details">
+          <h2>{selected.title}</h2>
+          <p>{selected.description}</p>
+          <p><strong>Prix : {selected.price} €</strong></p>
+          <p>Date : {new Date(selected.date).toLocaleDateString("fr-FR")} à {new Date(selected.date).toLocaleTimeString("fr-FR", {hour: "2-digit", minute: "2-digit"})}</p>
+          <p>Places disponibles : {selected.placesLeft}/{selected.places}</p>
+
+          <button onClick={() => handleReserve(selected._id)}>Réserver</button>
+          <button onClick={() => setSelected(null)}>Fermer</button>
+
+          {reserved && <p className="success">✅ Réservation confirmée !</p>}
         </div>
       )}
     </div>

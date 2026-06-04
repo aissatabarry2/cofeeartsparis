@@ -1,0 +1,102 @@
+.orders-wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 12px;
+}
+
+.orders-title {
+  font-size: 1.8rem;
+  color: #2c1810;
+  margin-bottom: 0.3rem;
+}
+
+.orders-subtitle {
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+.orders-filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.orders-filters input,
+.orders-filters select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fff;
+}
+
+.orders-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.sync-btn,
+.export-btn {
+  background: #2c1810;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.sync-btn:hover {
+  background: #3e2318;
+}
+
+.export-btn {
+  background: #4a4a2f;
+}
+
+.export-btn:hover {
+  background: #5b5b3a;
+}
+
+.orders-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.orders-table th {
+  background: #2c1810;
+  color: #fff;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+}
+
+.orders-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.orders-table .email {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.orders-table .total {
+  color: #d4a96a;
+  font-weight: bold;
+}
+
+.orders-table .empty {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}

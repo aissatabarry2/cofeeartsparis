@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+/* ==========================
+   VARIABLES GLOBALES
+========================== */
+
+:root {
+  --background: #f5f3ef;
+  --beige: #e9e3d8;
+  --olive: #6b725b;
+  --text: #222222;
+  --light-text: #777777;
+  --white: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ==========================
+   RESET
+========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
 }
 
-.App-link {
-  color: #61dafb;
+/* ==========================
+   LIENS
+========================== */
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ==========================
+   IMAGES
+========================== */
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================
+   BOUTONS
+========================== */
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ==========================
+   CONTAINER GLOBAL
+========================== */
+
+.container {
+  width: 85%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* ==========================
+   TITRES
+========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--text);
+}
+
+section {
+  padding: 90px 0;
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--olive);
+  border-radius: 50px;
 }

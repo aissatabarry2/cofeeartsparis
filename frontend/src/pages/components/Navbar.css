@@ -1,0 +1,85 @@
+.navbar {
+  height: 74px;
+  background: #e9e3d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ===================
+   PARTIES
+=================== */
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.nav-left {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-right {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.nav-logo {
+  width: 130px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-logo img {
+  width: 70px;
+  object-fit: contain;
+}
+
+/* ===================
+   LIENS
+=================== */
+
+.navbar a {
+  color: #646b58;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 0.7;
+}
+
+/* ===================
+   ICONES
+=================== */
+
+.nav-icons {
+  display: flex;
+  gap: 12px;
+  margin-left: 10px;
+}
+
+.nav-icons button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #b9b29f;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #646b58;
+  transition: 0.3s;
+}
+
+.nav-icons button:hover {
+  background: #d9d1c3;
+}

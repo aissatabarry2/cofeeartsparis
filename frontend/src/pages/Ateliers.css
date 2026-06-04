@@ -1,0 +1,69 @@
+.ateliers-wrapper {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: "Poppins", "Nunito", sans-serif;
+  color: #2c1810;
+}
+
+.ateliers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.atelier-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.atelier-card:hover {
+  transform: translateY(-5px);
+}
+
+.atelier-card h3 {
+  margin-bottom: 0.5rem;
+  color: #4a5532;
+}
+
+.atelier-details {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.atelier-details h2 {
+  margin-bottom: 1rem;
+  color: #4a5532;
+}
+
+.atelier-details button {
+  margin-right: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.atelier-details button:first-child {
+  background: #4a5532;
+  color: #fff;
+}
+
+.atelier-details button:last-child {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.success {
+  margin-top: 1rem;
+  color: #27ae60;
+  font-weight: 600;
+}

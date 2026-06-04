@@ -1,66 +1,100 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useCart } from '../context/CartContext';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useCart } from "../context/CartContext";
+import "./Boutique.css";
 
 const API = process.env.REACT_APP_API_URL;
 
 export default function Boutique() {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState('');
-  const [loading, setLoading] = useState(true);
-  const { addToCart } = useCart();
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { cart, addToCart, updateQuantity, removeFromCart, clearCart } = useCart();
 
   useEffect(() => {
-    const url = category ? `${API}/products?category=${category}` : `${API}/products`;
-    axios.get(url).then(r => { setProducts(r.data); setLoading(false); }).catch(() => setLoading(false));
-  }, [category]);
+    axios.get(`${API}/products`).then(res => {
+      setProducts(res.data);
+      setCategories(["Tous", ...new Set(res.data.map(p => p.category))]);
+    });
+  }, []);
 
-  const categories = ['', 'Café', 'Céramique', 'Accessoires'];
+  const filteredProducts = selectedCategory === "Tous"
+    ? products
+    : products.filter(p => p.category === selectedCategory);
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ color: '#2c1810', marginBottom: '0.5rem' }}>Boutique</h1>
-      <p style={{ color: '#888', marginBottom: '2rem' }}>Cafés de spécialité, céramiques et accessoires</p>
+    <div className="boutique-wrapper">
+      <h1>🛍️ Boutique</h1>
 
-      {/* Filtres */}
-      <div style={{ display: 'flex', gap: '0.8rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-        {categories.map(cat => (
-          <button key={cat} onClick={() => setCategory(cat)} style={{
-            padding: '0.5rem 1.2rem', borderRadius: '20px', cursor: 'pointer', fontSize: '0.9rem',
-            background: category === cat ? '#2c1810' : '#fff',
-            color: category === cat ? '#fff' : '#2c1810',
-            border: '1px solid #2c1810'
-          }}>
-            {cat || 'Tout'}
+      {/* Catégories */}
+      <div className="categories">
+        {categories.map(c => (
+          <button
+            key={c}
+            className={c === selectedCategory ? "active" : ""}
+            onClick={() => setSelectedCategory(c)}
+          >
+            {c}
           </button>
         ))}
       </div>
 
-      {loading ? <p>Chargement...</p> : products.length === 0 ? <p>Aucun produit disponible.</p> : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.5rem' }}>
-          {products.map(p => (
-            <div key={p._id} style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 15px rgba(0,0,0,0.07)' }}>
-              <div style={{ height: '200px', background: '#f0e8dc', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>
-                {p.category === 'Café' ? '☕' : p.category === 'Céramique' ? '🏺' : '⚗️'}
-              </div>
-              <div style={{ padding: '1.2rem' }}>
-                <span style={{ fontSize: '0.75rem', background: '#f0e8dc', color: '#8b5e3c', padding: '0.2rem 0.6rem', borderRadius: '10px' }}>{p.category}</span>
-                <h3 style={{ color: '#2c1810', margin: '0.6rem 0 0.4rem' }}>{p.name}</h3>
-                <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '1rem', lineHeight: '1.5' }}>{p.description}</p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: '#d4a96a', fontWeight: 'bold', fontSize: '1.2rem' }}>{p.price}€</span>
-                  <button onClick={() => addToCart(p)} style={{
-                    background: '#2c1810', color: '#fff', border: 'none', padding: '0.6rem 1.2rem',
-                    borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem'
-                  }}>
-                    + Panier
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Liste produits */}
+      <div className="products-grid">
+        {filteredProducts.map(p => (
+          <div key={p._id} className="product-card" onClick={() => setSelectedProduct(p)}>
+            <img src={p.image} alt={p.name} />
+            <h3>{p.name}</h3>
+            <p>{p.price}€</p>
+            <button onClick={(e) => { e.stopPropagation(); addToCart(p); }}>Ajouter au panier</button>
+          </div>
+        ))}
+      </div>
+
+      {/* Détails produit */}
+      {selectedProduct && (
+        <div className="product-details">
+          <h2>{selectedProduct.name}</h2>
+          <img src={selectedProduct.image} alt={selectedProduct.name} />
+          <p>{selectedProduct.description}</p>
+          <p><strong>{selectedProduct.price}€</strong></p>
+          <button onClick={() => addToCart(selectedProduct)}>Ajouter au panier</button>
+          <button onClick={() => setSelectedProduct(null)}>Fermer</button>
         </div>
       )}
+
+      {/* Panier */}
+      <div className="cart">
+        <h2>🛒 Panier</h2>
+        {cart.length === 0 ? (
+          <p>Votre panier est vide.</p>
+        ) : (
+          <>
+            <ul>
+              {cart.map(item => (
+                <li key={item._id}>
+                  {item.name} — {item.price}€ ×
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    min="1"
+                    onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
+                  />
+                  <button onClick={() => removeFromCart(item._id)}>Supprimer</button>
+                </li>
+              ))}
+            </ul>
+            <p><strong>Total : {total}€</strong></p>
+            <button onClick={clearCart}>Vider le panier</button>
+            <button onClick={() => alert("Simulation commande envoyée ✅")}>
+              Simuler commande
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

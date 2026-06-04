@@ -1,55 +1,127 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+import { useState } from "react";
+import axios from "axios";
 
 const API = process.env.REACT_APP_API_URL;
 
-export default function ClientSpace() {
-  const { user } = useAuth();
-  const [orders, setOrders] = useState([]);
+export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  useEffect(() => {
-    axios.get(`${API}/orders`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
-      .then(r => setOrders(r.data)).catch(() => {});
-  }, []);
+  const [success, setSuccess] = useState(false);
 
-  const statusColor = { pending: '#f39c12', confirmed: '#3498db', shipped: '#9b59b6', delivered: '#27ae60' };
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`${API}/contact`, form);
+      setSuccess(true);
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      setSuccess(false);
+    }
+  };
 
   return (
-    <div style={{ maxWidth: '900px', margin: '2rem auto', padding: '2rem' }}>
-      <div style={{ background: 'linear-gradient(135deg, #2c1810, #4a2c1a)', color: '#fff', padding: '2rem', borderRadius: '14px', marginBottom: '2rem' }}>
-        <h1 style={{ marginBottom: '0.3rem' }}>👤 Mon espace client</h1>
-        <p style={{ color: '#d4a96a' }}>Bienvenue, {user?.name} !</p>
-        <p style={{ color: '#ccc', fontSize: '0.9rem', marginTop: '0.3rem' }}>{user?.email}</p>
+    <div className="contact-wrapper">
+
+      {/* HEADER */}
+      <div className="contact-header">
+        <h1>Contactez-nous</h1>
+        <p>
+          Une question sur nos ateliers, notre café ou nos produits ?<br />
+          Nous sommes là pour vous répondre.
+        </p>
       </div>
 
-      <h2 style={{ color: '#2c1810', marginBottom: '1.5rem' }}>Mes commandes</h2>
-      {orders.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '3rem', background: '#fff', borderRadius: '12px', color: '#888' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📦</div>
-          <p>Aucune commande pour l'instant.</p>
-        </div>
-      ) : orders.map(o => (
-        <div key={o._id} style={{ background: '#fff', borderRadius: '10px', padding: '1.5rem', marginBottom: '1rem', boxShadow: '0 2px 10px rgba(0,0,0,0.06)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.8rem' }}>
-            <div>
-              <strong style={{ color: '#2c1810' }}>Commande #{o._id.slice(-8).toUpperCase()}</strong>
-              <div style={{ color: '#888', fontSize: '0.85rem', marginTop: '0.2rem' }}>
-                {new Date(o.createdAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-              </div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <span style={{ background: statusColor[o.status] || '#888', color: '#fff', padding: '0.3rem 0.8rem', borderRadius: '12px', fontSize: '0.8rem' }}>
-                {o.status}
-              </span>
-              <strong style={{ color: '#d4a96a', fontSize: '1.1rem' }}>{o.total}€</strong>
-            </div>
-          </div>
-          <div style={{ fontSize: '0.85rem', color: '#666' }}>
-            {o.items?.map((item, i) => <span key={i}>{item.name} ×{item.quantity}{i < o.items.length - 1 ? ', ' : ''}</span>)}
-          </div>
-        </div>
-      ))}
+      {/* INFOS */}
+      <div className="contact-info">
+        <div>📞 07.66.91.82.94</div>
+        <div>✉️ coffeeartsparis@gmail.com</div>
+        <div>🕒 Mar–Dim : 08h - 20h</div>
+      </div>
+
+      {/* FORMULAIRE */}
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Votre nom"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Votre email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+
+        <textarea
+          name="message"
+          placeholder="Votre message..."
+          rows="5"
+          value={form.message}
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit">Envoyer</button>
+
+        {success && (
+          <p className="success">Message envoyé avec succès ✅</p>
+        )}
+      </form>
+
+      {/* MAP */}
+      <div className="contact-map">
+        <h2>Nous rendre visite</h2>
+        <p>25 Boulevard du Temple, 75003 Paris</p>
+
+        <iframe
+          title="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.999!2d2.360122!3d48.866667"
+          width="100%"
+          height="350"
+          style={{ border: 0, borderRadius: "12px" }}
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      {/* FAQ */}
+      <div className="contact-faq">
+        <h2>FAQ</h2>
+
+        <details className="faq-item">
+          <summary>Qu'est-ce que Coffee Arts Paris ?</summary>
+          <p>Un café créatif proposant ateliers et expériences artistiques.</p>
+        </details>
+
+        <details className="faq-item">
+          <summary>Peut-on venir uniquement pour boire un café ?</summary>
+          <p>Oui, sans réservation nécessaire.</p>
+        </details>
+
+        <details className="faq-item">
+          <summary>Faut-il réserver ?</summary>
+          <p>Recommandé pour les ateliers, pas obligatoire pour le café.</p>
+        </details>
+
+        <details className="faq-item">
+          <summary>Le lieu est-il accessible ?</summary>
+          <p>Oui, accessible PMR.</p>
+        </details>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,150 @@
+.hero {
+  min-height: 100vh;
+  background: #a9a9a9;
+  position: relative;
+  color: white;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+/* ====================
+   NAVBAR
+==================== */
+
+.hero-navbar {
+  width: 100%;
+  padding: 25px 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 35px;
+}
+
+.hero-navbar a {
+  text-decoration: none;
+  color: #eadcc6;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+.logo img {
+  height: 75px;
+  object-fit: contain;
+}
+
+/* ====================
+   HERO CONTENT
+==================== */
+
+.hero-content {
+  max-width: 900px;
+
+  margin: 120px auto 0;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 78px;
+  line-height: 1.1;
+  color: #eadcc6;
+  margin-bottom: 25px;
+
+  font-weight: 700;
+  font-family: "Baloo 2", cursive;
+}
+
+.hero-content h3 {
+  font-size: 30px;
+  margin-bottom: 25px;
+  color: #f4f4f4;
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-content p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 24px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-content span {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 18px;
+  color: #f0f0f0;
+}
+
+/* ====================
+   BUTTONS
+==================== */
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-primary {
+  padding: 16px 36px;
+  border: none;
+  border-radius: 15px;
+  background: #e5d1b6;
+  color: #4d473f;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-secondary {
+  padding: 16px 36px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ====================
+   SOCIALS
+==================== */
+
+.social-floating {
+  position: fixed;
+  right: 25px;
+  bottom: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-floating a {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  background: #b6c18f;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
