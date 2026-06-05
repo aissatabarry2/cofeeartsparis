@@ -9,8 +9,8 @@ connectDB();
 app.use(cors({
   origin: [
     'http://localhost:3000',                          // développement local
-    'https://coffeeart-frontend.vercel.app',         // à mettre à jour après déploiement
-    'https://cofeeartsparis-front.vercel.app'        // alternative si déjà déployé
+    'http://localhost:5000',                          // développement local backend
+    'https://cofeeartsparis-front.vercel.app',        // frontend Vercel
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
