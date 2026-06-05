@@ -6,12 +6,10 @@ const API = process.env.REACT_APP_API_URL;
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post(`${API}/contact`, form);
-    setSent(true);
     setForm({ name: "", email: "", subject: "", message: "" });
   };
 

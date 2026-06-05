@@ -57,10 +57,6 @@ export default function Ateliers() {
       : a.type !== "iftar"
   );
 
-  const formatDate = (d) => new Date(d).toLocaleDateString("fr-FR", {
-    day: "numeric", month: "long", year: "numeric"
-  });
-
   const handleReserve = (atelier) => {
     const token = localStorage.getItem("token");
     if (!token) { navigate("/login"); return; }

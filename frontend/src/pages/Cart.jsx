@@ -12,7 +12,7 @@ export default function Cart() {
   const handleOrder = async () => {
     if (!user) return alert('Connectez-vous pour commander');
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/orders`,  {
+      await axios.post(`${API}/orders`,  {
         items: cart.map(i => ({ product: i._id, name: i.name, price: i.price, quantity: i.qty })),
         total
       }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
