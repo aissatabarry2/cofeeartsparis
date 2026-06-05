@@ -6,19 +6,15 @@ const connectDB = require('./config/db');
 const app = express();
 connectDB();
 
-// app.use(cors({
-//   origin: "https://cofeeartsparis-front.vercel.app", // ton frontend déployé
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true
-// }));
-// app.use(cors({
-//   origin: "https://ton-frontend.vercel.app",
-//   credentials: true
-// }));
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: [
+    'http://localhost:3000',                          // développement local
+    'https://coffeeart-frontend.vercel.app',         // à mettre à jour après déploiement
+    'https://cofeeartsparis-front.vercel.app'        // alternative si déjà déployé
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
- }));
+}));
 
 app.use(express.json());
 
