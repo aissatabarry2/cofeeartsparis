@@ -71,7 +71,7 @@ export default function Dashboard() {
     { label: "Revenus du jour",  sub: "Aujourd'hui",        value: fmt(stats.revenueDay), icon: "☀️",  path: null },
     { label: "Commandes",        sub: "Total des commandes", value: stats.orders,          icon: "🛒",  path: "/admin/commandes" },
     { label: "Utilisateurs",     sub: "Comptes actifs",      value: stats.users,           icon: "👥",  path: "/admin/users" },
-    { label: "Produits",         sub: "En catalogue",        value: stats.products,        icon: "📦",  path: "/admin/ceramique" },
+    { label: "Produits",         sub: "En catalogue",        value: stats.products,        icon: "📦",  path: "/admin/products" },
     { label: "Messages",         sub: "Total reçus",         value: stats.messages,        icon: "✉️",  path: "/admin/contacts" },
     { label: "Non lus",          sub: "Messages en attente", value: stats.unread,          icon: "📬",  path: "/admin/contacts" },
     { label: "Ateliers",         sub: "Ateliers en cours",   value: stats.ateliers,        icon: "🎨",  path: "/admin/ateliers" },
