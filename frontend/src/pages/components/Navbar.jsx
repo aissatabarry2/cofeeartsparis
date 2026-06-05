@@ -15,7 +15,7 @@ export default function Navbar() {
 
       <div className="nav-logo">
         <img
-          src="/images/logo.png"
+          src="/public/logo.png"
           alt="Coffee Arts"
         />
       </div>
