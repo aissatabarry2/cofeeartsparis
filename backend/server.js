@@ -30,5 +30,13 @@ app.use('/api/blogs', require('./routes/blogRoutes'));
 
 app.get('/', (req, res) => res.json({ message: 'CoffeeArt API running ✅' }));
 
+// Health check pour Vercel
+app.get('/health', (req, res) => res.status(200).json({ status: 'OK' }));
+
+// Export pour Vercel serverless + écoute pour développement local
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Serveur port ${PORT}`));
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => console.log(`🚀 Serveur port ${PORT}`));
+}
+
+module.exports = app;
