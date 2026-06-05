@@ -1,58 +1,137 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Dashboard.css";
 
 const API = process.env.REACT_APP_API_URL;
-const h = () => ({ Authorization: `Bearer ${localStorage.getItem('token')}` });
+const h = () => ({ Authorization: `Bearer ${localStorage.getItem("token")}` });
 
 export default function Dashboard() {
-  const [stats, setStats] = useState({ totalOrders: 0, revenue: 0 });
+  const navigate = useNavigate();
+  const [stats, setStats] = useState({
+    revenue: 0, revenueMonth: 0, revenueWeek: 0, revenueDay: 0,
+    orders: 0, users: 0, products: 0, messages: 0,
+    unread: 0, ateliers: 0, blogs: 0,
+  });
 
   useEffect(() => {
-    axios.get(`${API}/orders/stats`, { headers: h() }).then(r => setStats(r.data)).catch(() => {});
+    const load = async () => {
+      try {
+        const [ordRes, usrRes, prdRes, msgRes, atlRes, blgRes] = await Promise.allSettled([
+          axios.get(`${API}/orders`,   { headers: h() }),
+          axios.get(`${API}/users`,    { headers: h() }),
+          axios.get(`${API}/products`, { headers: h() }),
+          axios.get(`${API}/contact`,  { headers: h() }),
+          axios.get(`${API}/ateliers`, { headers: h() }),
+          axios.get(`${API}/blogs`),
+        ]);
+
+        const orders   = ordRes.status   === "fulfilled" ? ordRes.value.data   : [];
+        const users    = usrRes.status   === "fulfilled" ? usrRes.value.data   : [];
+        const products = prdRes.status   === "fulfilled" ? prdRes.value.data   : [];
+        const messages = msgRes.status   === "fulfilled" ? msgRes.value.data   : [];
+        const ateliers = atlRes.status   === "fulfilled" ? atlRes.value.data   : [];
+        const blogs    = blgRes.status   === "fulfilled" ? blgRes.value.data   : [];
+
+        const now   = new Date();
+        const month = now.getMonth();
+        const week  = new Date(now - 7 * 86400000);
+        const today = new Date(now.setHours(0,0,0,0));
+
+        const revenue      = orders.reduce((s, o) => s + (o.total || 0), 0);
+        const revenueMonth = orders.filter(o => new Date(o.createdAt).getMonth() === month).reduce((s,o) => s+(o.total||0), 0);
+        const revenueWeek  = orders.filter(o => new Date(o.createdAt) >= week).reduce((s,o) => s+(o.total||0), 0);
+        const revenueDay   = orders.filter(o => new Date(o.createdAt) >= today).reduce((s,o) => s+(o.total||0), 0);
+
+        setStats({
+          revenue, revenueMonth, revenueWeek, revenueDay,
+          orders:   orders.length,
+          users:    users.length,
+          products: products.length,
+          messages: messages.length,
+          unread:   messages.filter(m => !m.read).length,
+          ateliers: ateliers.length,
+          blogs:    blogs.length,
+        });
+      } catch (e) { console.error(e); }
+    };
+    load();
   }, []);
 
-  const cards = [
-    { label: 'Produits', icon: '📦', to: '/admin/products', color: '#3498db' },
-    { label: 'Commandes', icon: '📋', to: '/admin/orders', color: '#27ae60' },
-    { label: 'Ateliers', icon: '🎨', to: '/admin/ateliers', color: '#9b59b6' },
-    { label: 'Messages', icon: '✉️', to: '/admin/contacts', color: '#e67e22' },
-    { label: 'Utilisateurs', icon: '👥', to: '/admin/users', color: '#e74c3c' },
+  const fmt = (n) => `${Number(n).toFixed(2)}€`;
+
+  /* Chaque card avec son chemin de navigation */
+  const topCards = [
+    { label: "Revenus totaux",    sub: "Chiffre d'affaires", value: fmt(stats.revenue),      icon: "💰", color: "#4a5c44" },
+    { label: "Revenus du mois",   sub: "Ce mois",            value: fmt(stats.revenueMonth),  icon: "📅", color: "#4a5c44" },
+    { label: "Revenus de la sem.", sub: "Cette semaine",      value: fmt(stats.revenueWeek),   icon: "📈", color: "#4a5c44" },
+  ];
+
+  const bottomCards = [
+    { label: "Revenus du jour",  sub: "Aujourd'hui",        value: fmt(stats.revenueDay), icon: "☀️",  path: null },
+    { label: "Commandes",        sub: "Total des commandes", value: stats.orders,          icon: "🛒",  path: "/admin/commandes" },
+    { label: "Utilisateurs",     sub: "Comptes actifs",      value: stats.users,           icon: "👥",  path: "/admin/users" },
+    { label: "Produits",         sub: "En catalogue",        value: stats.products,        icon: "📦",  path: "/admin/ceramique" },
+    { label: "Messages",         sub: "Total reçus",         value: stats.messages,        icon: "✉️",  path: "/admin/contacts" },
+    { label: "Non lus",          sub: "Messages en attente", value: stats.unread,          icon: "📬",  path: "/admin/contacts" },
+    { label: "Ateliers",         sub: "Ateliers en cours",   value: stats.ateliers,        icon: "🎨",  path: "/admin/ateliers" },
+    { label: "Blogs",            sub: "Articles publiés",    value: stats.blogs,           icon: "📝",  path: "/admin/blogs" },
   ];
 
   return (
-    <div style={{ maxWidth: '1100px', margin: '2rem auto', padding: '2rem' }}>
-      <h1 style={{ color: '#2c1810', marginBottom: '0.3rem' }}>🛠 Dashboard Admin</h1>
-      <p style={{ color: '#888', marginBottom: '2rem' }}>Bienvenue dans l'interface d'administration</p>
+    <div className="dash-page">
 
-      {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginBottom: '2.5rem' }}>
-        {[
-          { label: 'Total commandes', value: stats.totalOrders, icon: '📋', color: '#27ae60' },
-          { label: 'Chiffre d\'affaires', value: `${stats.revenue}€`, icon: '💰', color: '#d4a96a' },
-        ].map(s => (
-          <div key={s.label} style={{ background: '#fff', borderRadius: '12px', padding: '1.5rem', boxShadow: '0 2px 15px rgba(0,0,0,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <div style={{ color: '#888', fontSize: '0.9rem', marginBottom: '0.3rem' }}>{s.label}</div>
-              <div style={{ color: s.color, fontSize: '2rem', fontWeight: 'bold' }}>{s.value}</div>
+      {/* Header */}
+      <div className="dash-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Vue d'ensemble de votre activité</p>
+        </div>
+        <button className="dash-reset-btn">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          Réinitialiser
+        </button>
+      </div>
+
+      {/* Top 3 — revenus */}
+      <div className="dash-top-grid">
+        {topCards.map((c, i) => (
+          <div className="dash-rev-card" key={i}>
+            <div className="dash-rev-card-top">
+              <svg className="dash-stack-ico" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <button className="dash-eye-btn">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
             </div>
-            <div style={{ fontSize: '2.5rem' }}>{s.icon}</div>
+            <div className="dash-rev-value">{c.value}</div>
+            <div className="dash-rev-label">{c.label}</div>
+            <div className="dash-rev-sub">{c.sub}</div>
           </div>
         ))}
       </div>
 
-      {/* Nav cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1.2rem' }}>
-        {cards.map(c => (
-          <Link key={c.to} to={c.to} style={{
-            background: c.color, color: '#fff', padding: '1.8rem',
-            borderRadius: '12px', textDecoration: 'none', textAlign: 'center', fontWeight: 'bold'
-          }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.8rem' }}>{c.icon}</div>
-            <div style={{ fontSize: '1rem' }}>{c.label}</div>
-          </Link>
+      {/* Bottom grid — stats cliquables */}
+      <div className="dash-bot-grid">
+        {bottomCards.map((c, i) => (
+          <div
+            key={i}
+            className={`dash-stat-card${c.path ? " dash-stat-clickable" : ""}`}
+            onClick={() => c.path && navigate(c.path)}
+            title={c.path ? `Aller vers ${c.label}` : ""}
+          >
+            <div className="dash-stat-icon">{c.icon}</div>
+            <div className="dash-stat-value">{c.value}</div>
+            <div className="dash-stat-label">{c.label}</div>
+            <div className="dash-stat-sub">{c.sub}</div>
+            {c.path && (
+              <div className="dash-stat-arrow">
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            )}
+          </div>
         ))}
       </div>
+
     </div>
   );
 }

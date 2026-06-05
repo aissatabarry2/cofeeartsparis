@@ -1,0 +1,365 @@
+/* ══════════════════════════════════════════
+   Espace Client — Coffee Arts Paris
+   ══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.cs-page {
+  background: #ffffff;
+  min-height: 100vh;
+  padding-top: 80px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cs-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ── Header ── */
+.cs-header {
+  margin-bottom: 36px;
+}
+
+.cs-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #1a1f1b;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.cs-welcome {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7a8a7b;
+}
+
+/* ── Tabs ── */
+.cs-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.cs-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: #5a6a5b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cs-tab:hover {
+  background: #f0ede7;
+  color: #3d4a3e;
+}
+
+.cs-tab.active {
+  background: #3d4a3e;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.cs-tab-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cs-tab-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Divider ── */
+.cs-divider {
+  height: 1px;
+  background: #e8e4dc;
+  margin: 20px 0 32px;
+}
+
+/* ── Card ── */
+.cs-card {
+  background: #ffffff;
+  border: 1px solid #e8e4dc;
+  border-radius: 16px;
+  padding: 32px 36px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.cs-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1f1b;
+  margin-bottom: 28px;
+}
+
+/* ── Empty state ── */
+.cs-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  gap: 16px;
+}
+
+.cs-empty-icon {
+  width: 52px;
+  height: 52px;
+  color: #c8cdc8;
+}
+
+.cs-empty-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cs-empty p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9aa09d;
+  text-align: center;
+}
+
+.cs-empty-msg {
+  text-align: center;
+  padding: 40px;
+  color: #9aa09d;
+  font-size: 14px;
+}
+
+/* ── Button ── */
+.cs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 28px;
+  border-radius: 100px;
+  background: #3d4a3e;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  margin-top: 4px;
+}
+
+.cs-btn:hover {
+  background: #4d5d4e;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(61,74,62,0.25);
+}
+
+/* ── Info grid (Mon compte) ── */
+.cs-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cs-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0ede7;
+}
+.cs-info-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.cs-info-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9aa09d;
+}
+
+.cs-info-value {
+  font-size: 15px;
+  font-weight: 400;
+  color: #1a1f1b;
+}
+
+.cs-badge {
+  display: inline-block;
+  background: #eef3ee;
+  color: #3d4a3e;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+/* ── Orders ── */
+.cs-order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #faf8f5;
+  border-radius: 10px;
+  border: 1px solid #ede9e0;
+  gap: 16px;
+}
+
+.cs-order-id {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1f1b;
+}
+
+.cs-order-date {
+  font-size: 12px;
+  color: #9aa09d;
+  margin-top: 2px;
+}
+
+.cs-order-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: #1a1f1b;
+}
+
+.cs-status {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.cs-status-pending    { background: #fff8e6; color: #b08000; }
+.cs-status-processing { background: #e6f0ff; color: #2a5fd9; }
+.cs-status-shipped    { background: #e6f5f0; color: #1a7a55; }
+.cs-status-delivered  { background: #eef3ee; color: #3d4a3e; }
+.cs-status-cancelled  { background: #fdecea; color: #c0392b; }
+
+/* ── Tracking ── */
+.cs-track-steps {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.cs-track-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #c8cdc8;
+  text-transform: capitalize;
+}
+
+.cs-track-step.done { color: #3d4a3e; }
+
+.cs-track-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #e0ddd8;
+  border: 2px solid #e0ddd8;
+}
+.cs-track-step.done .cs-track-dot {
+  background: #3d4a3e;
+  border-color: #3d4a3e;
+}
+
+/* ── Ateliers ── */
+.cs-atelier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-atelier-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #faf8f5;
+  border-radius: 10px;
+  border: 1px solid #ede9e0;
+}
+
+.cs-atelier-date-box {
+  width: 48px; height: 48px;
+  background: #3d4a3e;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cs-atelier-day {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: #fff;
+  line-height: 1;
+}
+
+.cs-atelier-month {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+}
+
+.cs-atelier-info { flex: 1; }
+
+.cs-atelier-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1f1b;
+  margin-bottom: 3px;
+}
+
+.cs-atelier-meta {
+  font-size: 12px;
+  color: #9aa09d;
+}
+
+.cs-badge-green {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: #eef3ee;
+  color: #3d4a3e;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .cs-container { padding: 32px 20px 60px; }
+  .cs-card { padding: 24px 20px; }
+  .cs-tabs { gap: 2px; }
+  .cs-tab { padding: 9px 14px; font-size: 13px; }
+  .cs-track-steps { display: none; }
+}

@@ -21,7 +21,7 @@ export default function Navbar() {
       </div>
 
       <div className="nav-right">
-        <a href="/">Blog</a>
+        <Link to="/blog">Blog</Link>
         <a href="/">Nos engagements</a>
          
       <Link to="/contact">Contact</Link>

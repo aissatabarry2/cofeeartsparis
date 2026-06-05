@@ -1,102 +1,335 @@
-.orders-wrapper {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #fafafa;
-  border-radius: 12px;
+/* ══ AdminOrders ══ */
+
+.co-page { padding: 0; }
+
+/* Header */
+.co-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1f1b;
+  margin-bottom: 0.2rem;
 }
 
-.orders-title {
-  font-size: 1.8rem;
-  color: #2c1810;
-  margin-bottom: 0.3rem;
-}
-
-.orders-subtitle {
-  color: #777;
+.co-sub {
+  font-size: 0.875rem;
+  color: #888;
   margin-bottom: 1.5rem;
 }
 
-.orders-filters {
+/* ── Filters card ── */
+.co-filters {
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 10px;
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.9rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.co-fg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.co-fg-lg { flex: 2; min-width: 200px; }
+
+.co-flabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Input recherche */
+.co-input-wrap {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.orders-filters input,
-.orders-filters select {
-  padding: 0.6rem 1rem;
-  border: 1px solid #ddd;
+  gap: 8px;
+  border: 1px solid #e0e0da;
   border-radius: 8px;
-  font-size: 0.9rem;
+  padding: 0.5rem 0.85rem;
   background: #fff;
 }
 
-.orders-actions {
-  margin-left: auto;
-  display: flex;
-  gap: 0.8rem;
+.co-input-ico {
+  width: 14px; height: 14px;
+  stroke: #bbb; fill: none;
+  stroke-width: 2; stroke-linecap: round;
+  flex-shrink: 0;
 }
 
-.sync-btn,
-.export-btn {
-  background: #2c1810;
+.co-input-wrap input {
+  border: none; outline: none;
+  font-size: 0.875rem; color: #333;
+  width: 100%; font-family: inherit;
+  background: transparent;
+}
+
+.co-input-wrap input::placeholder { color: #bbb; }
+
+/* Select */
+.co-sel-wrap {
+  position: relative;
+}
+
+.co-sel-wrap select {
+  width: 100%;
+  appearance: none;
+  padding: 0.5rem 2rem 0.5rem 0.85rem;
+  border: 1px solid #e0e0da;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #333;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.co-sel-wrap select:focus { border-color: #4a5c44; }
+
+.co-sel-chev {
+  position: absolute;
+  right: 0.6rem; top: 50%;
+  transform: translateY(-50%);
+  width: 13px; height: 13px;
+  stroke: #aaa; fill: none;
+  stroke-width: 2; stroke-linecap: round;
+  pointer-events: none;
+}
+
+/* Filter buttons */
+.co-filter-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.co-btn-sync {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #2563eb;
   color: #fff;
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 0.52rem 1rem;
   border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: opacity 0.15s;
 }
 
-.sync-btn:hover {
-  background: #3e2318;
+.co-btn-sync:hover { opacity: 0.88; }
+
+.co-btn-sync svg {
+  width: 13px; height: 13px;
+  stroke: #fff; fill: none;
+  stroke-width: 2; stroke-linecap: round;
 }
 
-.export-btn {
-  background: #4a4a2f;
+.co-btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #4a5c44;
+  color: #fff;
+  border: none;
+  padding: 0.52rem 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: opacity 0.15s;
 }
 
-.export-btn:hover {
-  background: #5b5b3a;
+.co-btn-export:hover { opacity: 0.88; }
+
+.co-btn-export svg {
+  width: 13px; height: 13px;
+  stroke: #fff; fill: none;
+  stroke-width: 2; stroke-linecap: round;
 }
 
-.orders-table table {
+.co-btn-refresh {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: 1px solid #e0e0da;
+  background: #f5f5f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.co-btn-refresh:hover { background: #e8e8e4; }
+
+.co-btn-refresh svg {
+  width: 14px; height: 14px;
+  stroke: #666; fill: none;
+  stroke-width: 2; stroke-linecap: round;
+}
+
+/* ── Table card ── */
+.co-table-card {
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.co-table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
 }
 
-.orders-table th {
-  background: #2c1810;
-  color: #fff;
-  padding: 1rem;
+/* thead — PAS de background coloré, juste texte gris */
+.co-table thead tr {
+  border-bottom: 1px solid #f0f0ec;
+}
+
+.co-table thead th {
+  padding: 0.85rem 1.1rem;
   text-align: left;
-  font-weight: 500;
-}
-
-.orders-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 0.9rem;
-}
-
-.orders-table .email {
-  color: #888;
   font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
 }
 
-.orders-table .total {
-  color: #d4a96a;
-  font-weight: bold;
+.co-table tbody tr {
+  border-bottom: 1px solid #f5f5f2;
+  transition: background 0.1s;
 }
 
-.orders-table .empty {
-  text-align: center;
-  padding: 2rem;
+.co-table tbody tr:last-child { border-bottom: none; }
+.co-table tbody tr:hover { background: #fafaf8; }
+
+.co-table tbody td {
+  padding: 0.9rem 1.1rem;
+  vertical-align: middle;
+}
+
+/* Cells */
+.co-cell-id {
+  font-family: monospace;
+  font-size: 0.82rem;
   color: #888;
+}
+
+.co-client-name {
+  font-weight: 600;
+  color: #1a1f1b;
+  font-size: 0.875rem;
+}
+
+.co-client-email {
+  font-size: 0.78rem;
+  color: #888;
+  margin-top: 1px;
+}
+
+.co-cell-total {
+  font-weight: 600;
+  color: #1a1f1b;
+}
+
+.co-cell-payment {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.co-cell-date {
+  font-size: 0.85rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Status badge + dropdown */
+.co-status-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.co-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.co-badge-chev-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 18px;
+}
+
+.co-badge-chev {
+  width: 14px; height: 14px;
+  stroke: #aaa; fill: none;
+  stroke-width: 2; stroke-linecap: round;
+  pointer-events: none;
+}
+
+.co-badge-select {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Actions */
+.co-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.co-act {
+  width: 28px; height: 28px;
+  border-radius: 6px; border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #888;
+  transition: background 0.15s, color 0.15s;
+}
+
+.co-act:hover { background: #f0f0ec; color: #333; }
+
+.co-act svg {
+  width: 15px; height: 15px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.co-act-del { color: #e74c3c; }
+.co-act-del:hover { background: #fce4ec; color: #c0392b; }
+
+/* Empty */
+.co-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #aaa;
+  font-size: 0.9rem;
 }

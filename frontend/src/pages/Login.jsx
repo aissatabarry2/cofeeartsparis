@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const API = process.env.REACT_APP_API_URL; // http://localhost:5000/api
+const API = process.env.REACT_APP_API_URL;
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,75 +20,45 @@ export default function Login() {
     setLoading(true);
     setError("");
     try {
-      if (isLogin) {
-        // CONNEXION
-        const res = await axios.post(`${API}/auth/login`, {
-          email: form.email,
-          password: form.password,
-        });
-        login(res.data.user, res.data.token);
-        navigate(res.data.user.role === "admin" ? "/admin" : "/espace-client");
-      } else {
-        // INSCRIPTION
-        await axios.post(`${API}/auth/register`, {
-          name: form.name,
-          email: form.email,
-          password: form.password,
-        });
-        setError("");
-        alert("Compte créé ! Vous pouvez vous connecter.");
-        setIsLogin(true);
-        setForm({ name: "", email: "", password: "" });
-      }
+      const endpoint = isLogin ? "/auth/login" : "/auth/register";
+      const res = await axios.post(`${API}${endpoint}`, form);
+
+      login(res.data.user, res.data.token);
+
+      navigate(res.data.user.role === "admin" ? "/admin" : "/espace-client");
     } catch (err) {
-      const msg = err.response?.data?.message || "Erreur serveur. Vérifie que le backend tourne.";
-      setError(msg);
+      setError(err.response?.data?.message || "Erreur de connexion");
     } finally {
       setLoading(false);
     }
   };
 
-  const switchMode = (mode) => {
-    setIsLogin(mode);
-    setError("");
-    setForm({ name: "", email: "", password: "" });
-  };
-
   return (
-  <div className="login-page">
-    <div className="login-card">
+    <div className="form-container">
+      <h2>Coffee Arts Paris</h2>
 
-      {/* TITLE */}
-      <div className="login-logo">
-        <h1>Coffee Arts Paris</h1>
-      </div>
-
-      {/* TABS */}
-      <div className="auth-tabs">
+      <div className="toggle-buttons">
         <button
           className={isLogin ? "active" : ""}
-          onClick={() => switchMode(true)}
-          type="button"
+          onClick={() => setIsLogin(true)}
         >
           Connexion
         </button>
-
         <button
           className={!isLogin ? "active" : ""}
-          onClick={() => switchMode(false)}
-          type="button"
+          onClick={() => setIsLogin(false)}
         >
           Inscription
         </button>
       </div>
 
-      {/* FORM */}
-      <form onSubmit={handleSubmit} className="auth-form">
+      {error && <p className="error-box">{error}</p>}
 
+      <form onSubmit={handleSubmit}>
         {!isLogin && (
           <input
             type="text"
-            placeholder="Votre nom"
+            placeholder="Nom complet"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
@@ -97,13 +67,13 @@ export default function Login() {
 
         <input
           type="email"
-          placeholder="votre@email.com"
+          placeholder="Email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           required
         />
 
-        <div className="password-box">
+        <div className="password-field">
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Mot de passe"
@@ -111,47 +81,24 @@ export default function Login() {
             onChange={(e) => setForm({ ...form, password: e.target.value })}
             required
           />
-          <span onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? "🙈" : "👁️"}
+          <span
+            className="toggle-eye"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            👁️
           </span>
         </div>
 
-        <button className="primary-btn" disabled={loading}>
-          {loading ? "Chargement..." : isLogin ? "Se connecter" : "S'inscrire"}
+        <button type="submit" className="submit-btn" disabled={loading}>
+          {loading
+            ? isLogin
+              ? "Connexion..."
+              : "Inscription..."
+            : isLogin
+            ? "Se connecter"
+            : "S’inscrire"}
         </button>
-
       </form>
-
-      {/* DIVIDER */}
-      <div className="divider">
-        <span>OU</span>
-      </div>
-
-      {/* GOOGLE */}
-      <button className="google-btn">
-        <img
-          src="https://www.svgrepo.com/show/355037/google.svg"
-          alt="google"
-        />
-        Continuer avec Google
-      </button>
-
-      {/* FOOTER */}
-      <p className="switch-text">
-        {isLogin ? (
-          <>
-            Pas encore de compte ?{" "}
-            <span onClick={() => switchMode(false)}>S'inscrire</span>
-          </>
-        ) : (
-          <>
-            Déjà un compte ?{" "}
-            <span onClick={() => switchMode(true)}>Se connecter</span>
-          </>
-        )}
-      </p>
-
     </div>
-  </div>
-);
+  );
 }

@@ -142,7 +142,7 @@ export default function Contact() {
 
       {/* FAQ */}
       <section className="contact-faq">
-        <h2>❓ FAQ</h2>
+        <h2>FAQ</h2>
         <div className="faq-item">
           <h3>Quels sont vos horaires ?</h3>
           <p>Mardi–Vendredi 08h–20h • Samedi–Dimanche 10h–21h</p>
