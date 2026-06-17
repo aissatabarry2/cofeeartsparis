@@ -26,3 +26,9 @@ exports.remove = async (req, res) => {
     res.json({ message: 'Atelier supprimé' });
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
+
+exports.reserver = (req, res) => {
+  // logique de réservation
+  res.json({ message: "Atelier réservé avec succès" });
+};
+

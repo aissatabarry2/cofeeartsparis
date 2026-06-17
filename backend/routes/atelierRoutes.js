@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAll, create, update, remove } = require('../controllers/atelierController');
+const { getAll, create, update, remove, reserver } = require('../controllers/atelierController');
 const { protect, adminOnly } = require('../middleware/authMiddleware');
 
 router.get('/', getAll);
