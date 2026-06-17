@@ -7,24 +7,20 @@ export default function Navbar() {
     <nav className="navbar">
 
       <div className="nav-left">
-        <a href="/">Café</a>
+        <Link to="/cafe">Café</Link>
         <Link to="/ateliers">Ateliers</Link>
         <Link to="/boutique">Boutique</Link>
-        <a href="/">Événements</a>
+        <Link to="/evenements">Événements</Link>
       </div>
 
       <div className="nav-logo">
-        <img
-          src="/public/logo.png"
-          alt="Coffee Arts"
-        />
+        <img src="/logo.png" alt="Coffee Arts" />
       </div>
 
       <div className="nav-right">
         <Link to="/blog">Blog</Link>
-        <a href="/">Nos engagements</a>
-         
-      <Link to="/contact">Contact</Link>
+        <Link to="/engagements">Nos engagements</Link>
+        <Link to="/contact">Contact</Link>
         <Link to="/login">Espace client</Link>
 
         <div className="nav-icons">
