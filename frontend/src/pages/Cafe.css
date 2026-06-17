@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.cafe-page {
+  font-family: 'DM Sans', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+
+/* ── Hero ── */
+.cafe-hero {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+}
+
+.cafe-hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 4rem;
+  font-weight: 400;
+  color: #1a1f1b;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.cafe-hero-title em {
+  font-style: italic;
+  color: #4a5c44;
+}
+
+.cafe-hero-sub {
+  font-size: 1.05rem;
+  color: #666;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── Tabs ── */
+.cafe-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.cafe-tab {
+  padding: 0.6rem 1.6rem;
+  border-radius: 30px;
+  border: 1.5px solid #e0e0da;
+  background: #fff;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.cafe-tab:hover { border-color: #4a5c44; color: #4a5c44; }
+
+.cafe-tab-active {
+  background: #4a5c44 !important;
+  color: #fff !important;
+  border-color: #4a5c44 !important;
+}
+
+/* ── Carte grid ── */
+.carte-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.carte-card-full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .carte-grid { grid-template-columns: 1fr; }
+  .carte-card-full { grid-column: auto; }
+}
+
+/* ── Carte card ── */
+.carte-card {
+  background: #f5efe6;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.carte-card-brunch { background: #f0ede8; }
+
+.carte-card-inner { padding: 2rem; }
+
+.carte-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.carte-underline {
+  height: 2px;
+  width: 60px;
+  border-radius: 2px;
+  margin-bottom: 1.2rem;
+}
+
+.carte-note {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+/* Menu items */
+.carte-items { margin-bottom: 1.2rem; }
+
+.carte-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.carte-item:last-child { border-bottom: none; }
+
+.carte-item-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  letter-spacing: 0.03em;
+}
+
+.carte-item-price {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+/* Lait végétal */
+.carte-lait {
+  background: rgba(255,255,255,0.5);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.78rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+/* Boisson signature */
+.carte-signature-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.carte-signatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.8rem;
+}
+
+.carte-signature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.carte-sig-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4a5c44;
+  border: 1.5px solid rgba(74,92,68,0.2);
+}
+
+.carte-sig-info { display: flex; flex-direction: column; gap: 2px; }
+
+.carte-sig-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.3;
+}
+
+.carte-sig-note {
+  font-size: 0.65rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* ── Brunch ── */
+.brunch-items { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem; }
+
+.brunch-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.brunch-item-img-placeholder {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.brunch-item-info { flex: 1; }
+
+.brunch-item-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #8b7355;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.brunch-item-desc {
+  font-size: 0.78rem;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.brunch-item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+/* Suppléments */
+.brunch-suppl {
+  background: #4a5c44;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+.brunch-suppl-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+.brunch-suppl-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.brunch-suppl-item:last-child { border-bottom: none; }
+
+.brunch-suppl-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.brunch-suppl-price {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+/* ── Torréfaction ── */
+.torr-page { padding: 1rem 0 2rem; }
+
+.torr-hero {
+  text-align: center;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.torr-hero h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: #1a1f1b;
+  margin-bottom: 0.5rem;
+}
+
+.torr-hero p { font-size: 1rem; color: #888; }
+
+.torr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) { .torr-grid { grid-template-columns: 1fr; } }
+
+.torr-card {
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 14px;
+  padding: 1.8rem;
+}
+
+.torr-card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+
+.torr-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1f1b;
+  margin-bottom: 0.6rem;
+}
+
+.torr-card p { font-size: 0.875rem; color: #666; line-height: 1.7; }
+
+.torr-origins { text-align: center; }
+
+.torr-origins h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1f1b;
+  margin-bottom: 1rem;
+}
+
+.torr-origin-tags {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.torr-tag {
+  background: #f0f2ef;
+  color: #4a5c44;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid #d4dcce;
+}
+
+/* ── Torréfacteurs ── */
+.torrefacteurs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+@media (max-width: 768px) { .torrefacteurs-grid { grid-template-columns: 1fr; } }
+
+.torrefacteur-card {
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 14px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.torrefacteur-logo { font-size: 2rem; }
+
+.torrefacteur-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1f1b;
+}
+
+.torrefacteur-city {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+.torrefacteur-desc {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.torrefacteur-link {
+  font-size: 0.85rem;
+  color: #4a5c44;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.torrefacteur-link:hover { text-decoration: underline; }
+/* ══ Bottom section ══ */
+.cafe-bottom {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Nos cafés */
+.cafe-nos-cafes {
+  background: #fff;
+  border: 1px solid #e8e4dc;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cafe-nos-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1f1b;
+  margin-bottom: 0.5rem;
+}
+
+.cafe-nos-sub {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.cafe-nos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .cafe-nos-grid { grid-template-columns: 1fr; }
+}
+
+.cafe-nos-card {
+  background: #f9f4ed;
+  border-radius: 14px;
+  padding: 1.5rem 1.3rem;
+  text-align: center;
+}
+
+.cafe-nos-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1f1b;
+  margin-bottom: 0.7rem;
+}
+
+.cafe-nos-card-desc {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* CTA visite */
+.cafe-cta {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(180deg, #fff 0%, #f5f3ef 100%);
+}
+
+.cafe-cta-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #1a1f1b;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+}
+
+.cafe-cta-sub {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 1.8rem;
+}
+
+.cafe-cta-btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: #7a8c5e;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.cafe-cta-btn:hover { background: #5e6e47; }

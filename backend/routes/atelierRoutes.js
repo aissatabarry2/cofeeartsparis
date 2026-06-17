@@ -3,6 +3,7 @@ const { getAll, create, update, remove } = require('../controllers/atelierContro
 const { protect, adminOnly } = require('../middleware/authMiddleware');
 
 router.get('/', getAll);
+router.post('/:id/reserve',reserver );
 router.post('/', protect, adminOnly, create);
 router.put('/:id', protect, adminOnly, update);
 router.delete('/:id', protect, adminOnly, remove);
