@@ -79,7 +79,7 @@ export default function Cafe() {
 
   return (
     <div className="cafe-page">
-
+        
       {/* ── HERO ── */}
       <div className="cafe-hero">
         <h1 className="cafe-hero-title">La <em>carte</em></h1>
@@ -104,199 +104,167 @@ export default function Cafe() {
 
       {/* ══════════════ LA CARTE ══════════════ */}
       {activeTab === "La carte" && (
-        <div className="carte-grid">
+  <>
+    {/* Images du menu */}
+    <div className="carte-images-section">
+      <div className="carte-img-wrap">
+        <img src="/MENU PARTIE 1.jpg" alt="Menu Café & Matcha" className="carte-menu-img" />
+      </div>
+      <div className="carte-img-wrap">
+        <img src="/MENU PARTIE 2.jpg" alt="Menu Pastry & Snack" className="carte-menu-img" />
+      </div>
+    </div>
 
-          {/* Card CAFÉ */}
-          <div className="carte-card">
-            <div className="carte-card-inner">
-              <h2 className="carte-section-title" style={{ color: CARTE_DATA[0].color }}>
-                CAFÉ
-              </h2>
-              <div className="carte-underline" style={{ background: CARTE_DATA[0].color }} />
-
-              {/* Items */}
-              <div className="carte-items">
-                {CARTE_DATA[0].items.map(i => (
-                  <div key={i.name} className="carte-item">
-                    <span className="carte-item-name">{i.name}</span>
-                    <span className="carte-item-price">{i.price}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Lait végétal */}
-              <div className="carte-lait">
-                <strong>LAIT VÉGÉTAUX :</strong><br />
-                {CARTE_DATA[0].laitVegetal}
-              </div>
-
-              {/* Boissons signature */}
-              <div className="carte-signature-title">BOISSON SIGNATURE</div>
-              <div className="carte-signatures">
-                {CARTE_DATA[0].signatures.map(s => (
-                  <div key={s.name} className="carte-signature-item">
-                    <div className="carte-sig-circle">
-                      <span className="carte-sig-price">{s.price}</span>
-                    </div>
-                    <div className="carte-sig-info">
-                      <span className="carte-sig-name">{s.name}</span>
-                      <span className="carte-sig-note">{s.note}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+    {/* Nos cafés + CTA */}
+    <div className="cafe-bottom">
+      <div className="cafe-nos-cafes">
+        <h2 className="cafe-nos-title">Nos cafés</h2>
+        <p className="cafe-nos-sub">
+          Une sélection de cafés de spécialité, travaillés avec attention, de l'origine à l'extraction.
+        </p>
+        <div className="cafe-nos-grid">
+          {[
+            {
+              title: "Origine des cafés",
+              desc: "Nous sélectionnons des cafés de spécialité auprès de torréfacteurs choisis avec attention, en privilégiant la qualité, la traçabilité et le respect du produit."
+            },
+            {
+              title: "Préparation & extraction",
+              desc: "Chaque café est préparé avec soin, en adaptant la méthode d'extraction afin de révéler au mieux ses arômes et son équilibre."
+            },
+            {
+              title: "Nos torréfacteurs",
+              desc: "Nous collaborons avec différents torréfacteurs pour proposer une sélection de cafés adaptée au lieu et aux saisons."
+            },
+          ].map(c => (
+            <div key={c.title} className="cafe-nos-card">
+              <h3 className="cafe-nos-card-title">{c.title}</h3>
+              <p className="cafe-nos-card-desc">{c.desc}</p>
             </div>
-          </div>
-
-          {/* Card BRUNCH */}
-          <div className="carte-card carte-card-brunch">
-            <div className="carte-card-inner">
-              <h2 className="carte-section-title" style={{ color: CARTE_DATA[2].color }}>
-                BRUNCH
-              </h2>
-              <div className="carte-underline" style={{ background: CARTE_DATA[2].color }} />
-
-              <div className="brunch-items">
-                {CARTE_DATA[2].items.map(item => (
-                  <div key={item.name} className="brunch-item">
-                    <div className="brunch-item-img-placeholder">🍳</div>
-                    <div className="brunch-item-info">
-                      <h4 className="brunch-item-name">{item.name}</h4>
-                      <p className="brunch-item-desc">{item.desc}</p>
-                      <span className="brunch-item-price">{item.price}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Suppléments */}
-              <div className="brunch-suppl">
-                <div className="brunch-suppl-title">Supplément</div>
-                {CARTE_DATA[2].supplements.map(s => (
-                  <div key={s.name} className="brunch-suppl-item">
-                    <span className="brunch-suppl-name">{s.name}</span>
-                    <span className="brunch-suppl-price">{s.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Card MATCHA */}
-          <div className="carte-card carte-card-full">
-            <div className="carte-card-inner">
-              <h2 className="carte-section-title" style={{ color: CARTE_DATA[1].color }}>
-                MATCHA
-              </h2>
-              <div className="carte-underline" style={{ background: CARTE_DATA[1].color }} />
-              <p className="carte-note">(servi froid ou chaud)</p>
-              <div className="carte-items">
-                {CARTE_DATA[1].items.map(i => (
-                  <div key={i.name} className="carte-item">
-                    <span className="carte-item-name">{i.name}</span>
-                    <span className="carte-item-price">{i.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
+          ))}
         </div>
-      )}
+      </div>
+
+      <div className="cafe-cta">
+        <h2 className="cafe-cta-title">
+          Une expérience à vivre<br />sur place
+        </h2>
+        <p className="cafe-cta-sub">
+          Toutes les informations pour venir découvrir le café.
+        </p>
+        <button className="cafe-cta-btn">Nous rendre visite</button>
+      </div>
+    </div>
+  </>
+)}
 
       {/* ══════════════ TORRÉFACTION ══════════════ */}
       {activeTab === "Torréfaction" && (
-        <div className="torr-page">
-          <div className="torr-hero">
-            <h2>Notre approche de la torréfaction</h2>
-            <p>Du producteur à votre tasse, une chaîne du café transparente et engagée.</p>
-          </div>
-          <div className="torr-grid">
-            {TORREFACTION.map(t => (
-              <div key={t.title} className="torr-card">
-                <div className="torr-card-icon">☕</div>
-                <h3>{t.title}</h3>
-                <p>{t.content}</p>
-              </div>
-            ))}
-          </div>
-          <div className="torr-origins">
-            <h3>Nos origines du moment</h3>
-            <div className="torr-origin-tags">
-              {["Éthiopie Yirgacheffe", "Colombie Huila", "Brésil Cerrado", "Guatemala Antigua"].map(o => (
-                <span key={o} className="torr-tag">{o}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+  <div className="torr-page">
+
+    {/* SECTION TEXTE */}
+    <section className="torr-section">
+      <h2>Origine des grains</h2>
+
+      <p>
+        Chez Coffee Arts Paris, nous accordons une attention particulière
+        à l'origine de chaque café que nous servons.
+      </p>
+
+      <p>
+        Pour notre café signature, nous avons choisi de travailler avec Belleville Brûlerie,
+        référence du café de spécialité à Paris, reconnue pour la qualité de ses assemblages
+        ainsi que la sélection des grains.
+      </p>
+
+      <p>
+        Notre café signature, Body Builder, est un assemblage de deux origines complémentaires :
+        <br /><strong>Brésil – 70 % pour la rondeur et l’équilibre</strong><br />
+        <strong>Éthiopie – 30 % pour les arômes aromatiques</strong>.
+      </p>
+
+      <p>
+        Ce choix d’origines permet d’obtenir un café équilibré, à la fois intense et enveloppant,
+        pensé pour offrir une expérience généreuse en tasse.
+      </p>
+    </section>
+
+    {/* IMAGE BANNIÈRE */}
+    <div className="torr-banner">
+      <img src="/new.png" alt="Torréfaction" />
+    </div>
+
+    {/* Extraction */}
+    <section className="torr-section">
+      <h2>Torréfaction & extraction</h2>
+
+      <p>
+        Le Body Builder bénéficie d'une torréfaction plus poussée, qui développe un corps puissant et une belle profondeur de saveurs.
+      </p>
+
+      <p>
+        En tasse, on retrouve des notes gourmandes de cacao, chocolat et amandes, relevées par une légère acidité, pour un café enveloppant et structuré.
+      </p>
+      <p>
+        Nous adaptons nos méthodes d'extraction afin de respecter cette identité : révéler la matière, la rondeur et l'intensité, sans jamais masquer le caractère du café.
+      </p>
+    </section>
+
+  </div>
+)}
 
       {/* ══════════════ NOS TORRÉFACTEURS ══════════════ */}
       {activeTab === "Nos torréfacteurs" && (
-        <div className="torr-page">
-          <div className="torr-hero">
-            <h2>Nos partenaires torréfacteurs</h2>
-            <p>Des artisans passionnés avec qui nous partageons les mêmes valeurs.</p>
-          </div>
-          <div className="torrefacteurs-grid">
-            {TORREFACTEURS.map(t => (
-              <div key={t.name} className="torrefacteur-card">
-                <div className="torrefacteur-logo">☕</div>
-                <h3 className="torrefacteur-name">{t.name}</h3>
-                <span className="torrefacteur-city">📍 {t.city}</span>
-                <p className="torrefacteur-desc">{t.desc}</p>
-                <a href={`https://${t.site}`} target="_blank" rel="noreferrer" className="torrefacteur-link">
-                  {t.site} →
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    {/* ══ NOS CAFÉS + CTA ══ */}
-      <div className="cafe-bottom">
+  <div className="torr-page">
 
-        {/* Nos cafés card */}
-        <div className="cafe-nos-cafes">
-          <h2 className="cafe-nos-title">Nos cafés</h2>
-          <p className="cafe-nos-sub">
-            Une sélection de cafés de spécialité, travaillés avec attention, de l'origine à l'extraction.
-          </p>
-          <div className="cafe-nos-grid">
-            {[
-              {
-                title: "Origine des cafés",
-                desc: "Nous sélectionnons des cafés de spécialité auprès de torréfacteurs choisis avec attention, en privilégiant la qualité, la traçabilité et le respect du produit."
-              },
-              {
-                title: "Préparation & extraction",
-                desc: "Chaque café est préparé avec soin, en adaptant la méthode d'extraction afin de révéler au mieux ses arômes et son équilibre."
-              },
-              {
-                title: "Nos torréfacteurs",
-                desc: "Nous collaborons avec différents torréfacteurs pour proposer une sélection de cafés adaptée au lieu et aux saisons."
-              },
-            ].map(c => (
-              <div key={c.title} className="cafe-nos-card">
-                <h3 className="cafe-nos-card-title">{c.title}</h3>
-                <p className="cafe-nos-card-desc">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+    {/* ── INTRO ── */}
+    <section className="torr-section">
+      <h2>Nos torréfacteurs</h2>
+      <p>Des partenaires engagés pour un café de qualité.</p>
+    </section>
 
-        {/* CTA visite */}
-        <div className="cafe-cta">
-          <h2 className="cafe-cta-title">
-            Une expérience à vivre<br />sur place
-          </h2>
-          <p className="cafe-cta-sub">
-            Toutes les informations pour venir découvrir le café.
-          </p>
-          <button className="cafe-cta-btn">Nous rendre visite</button>
-        </div>
+    {/* ── TEXTE PRINCIPAL ── */}
+    <div className="torr-text">
+      <p>
+        Chez Coffee Arts Paris, nous avons choisi de travailler avec des torréfacteurs engagés.
+        Des partenaires qui placent la qualité, la transparence et le respect du produit au cœur de leur démarche.
+      </p>
+      <p>
+        Parmi eux, l’entreprise Belleville occupe une place centrale. Torréfacteur reconnu du café de spécialité à Paris,
+        Belleville sélectionne ses grains avec exigence et entretient des relations durables avec les producteurs.
+      </p>
+    </div>
 
+    {/* ── CARTES ── */}
+    <div className="torr-cards">
+      <div className="torr-card">
+        <h3>Une composition pensée avec précision</h3>
+        <p>
+          Chaque assemblage est conçu pour trouver l’équilibre entre intensité, rondeur et richesse aromatique.
+          La torréfaction est ajustée pour révéler le caractère du café, tout en respectant son origine.
+        </p>
       </div>
+
+      <div className="torr-card">
+        <h3>Un café fraîchement torréfié</h3>
+        <p>
+          Les cafés sont torréfiés en petites séries afin de garantir fraîcheur et régularité.
+          Un soin particulier pour préserver les arômes et offrir une expérience constante.
+        </p>
+      </div>
+
+      <div className="torr-card">
+        <h3>Un engagement qui va plus loin</h3>
+        <p>
+          Au‑delà du goût, nous partageons avec nos torréfacteurs une même vision : soutenir une filière plus responsable.
+          Régénération des forêts, pratiques agricoles durables et valorisation du travail des producteurs font partie intégrante de cette démarche.
+        </p>
+      </div>
+    </div>
+
+  </div>
+)}
+
     </div>
   );
 }

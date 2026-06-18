@@ -8,7 +8,7 @@ export default function Navbar() {
 
       <div className="nav-left">
         <Link to="/cafe">Café</Link>
-        <Link to="/ateliers">Ateliers</Link>
+        <Link to="/ateliers">Céramique</Link>
         <Link to="/boutique">Boutique</Link>
         <Link to="/evenements">Événements</Link>
       </div>
@@ -19,9 +19,10 @@ export default function Navbar() {
 
       <div className="nav-right">
         <Link to="/blog">Blog</Link>
-        <Link to="/engagements">Nos engagements</Link>
+        <Link to="/nos-engagements">Nos engagements</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/login">Espace client</Link>
+        
 
         <div className="nav-icons">
           <button>

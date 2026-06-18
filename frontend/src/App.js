@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import ClientSpace from "./pages/ClientSpace";
-import Blog from "./pages/Blog";
+import Blog, { BlogArticle } from "./pages/Blog";
 import Cafe from "./pages/Cafe";
 
 import Dashboard from "./pages/admin/Dashboard";
@@ -23,6 +23,8 @@ import AdminAteliers from "./pages/admin/AdminAteliers";
 import AdminContacts from "./pages/admin/AdminContacts";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminBlogs from "./pages/admin/AdminBlogs";
+import Evenements from "./pages/Evenements";
+import Engagements from "./pages/Engagements";
 
 
 import AdminLayout from "./pages/components/admin/AdminLayout";
@@ -79,8 +81,11 @@ export default function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogArticle />} />
             <Route path="/cafe" element={<Cafe />} />
             <Route path="/carte" element={<Cafe />} />
+            <Route path="/evenements" element={<Evenements />} /> 
+            <Route path="/nos-engagements" element={<Engagements />} />
 
             {/* ESPACE CLIENT */}
             <Route

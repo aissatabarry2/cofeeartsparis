@@ -163,3 +163,38 @@
     gap: 10px;
   }
 }
+/* Payment Icons */
+.payment-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;               /* espace entre les icônes */
+  margin-top: 1rem;
+}
+
+/* Style général des icônes */
+.payment-icons img {
+  width: 45px;               /* taille uniforme */
+  height: 30px;
+  object-fit: contain;
+  border-radius: 6px;        /* coins légèrement arrondis */
+  background: #fff;          /* fond blanc pour contraste */
+  padding: 4px 6px;          /* respiration interne */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effet au survol */
+.payment-icons img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* Ajustement responsive */
+@media (max-width: 600px) {
+  .payment-icons img {
+    width: 30px;
+    height: 20px;
+    padding: 3px 5px;
+  }
+}

@@ -286,123 +286,173 @@
   font-weight: 500;
 }
 
-/* ── Torréfaction ── */
-.torr-page { padding: 1rem 0 2rem; }
+/* ─────────────────────────
+   TORRÉFACTION
+───────────────────────── */
 
-.torr-hero {
-  text-align: center;
-  padding: 1.5rem 0 2.5rem;
+.torr-page{
+  margin-top:40px;
 }
 
-.torr-hero h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
-  color: #1a1f1b;
-  margin-bottom: 0.5rem;
+/* SECTION TEXTE */
+
+.torr-section{
+  max-width:900px;
+  margin:80px auto;
+  text-align:center;
 }
 
-.torr-hero p { font-size: 1rem; color: #888; }
-
-.torr-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  margin-bottom: 2.5rem;
+.torr-section h2{
+  font-family:'DM Serif Display', serif;
+  font-size:3rem;
+  color:#7f8764;
+  margin-bottom:30px;
 }
 
-@media (max-width: 768px) { .torr-grid { grid-template-columns: 1fr; } }
-
-.torr-card {
-  background: #fff;
-  border: 1px solid #e8e4dc;
-  border-radius: 14px;
-  padding: 1.8rem;
+.torr-section p{
+  font-size:1.05rem;
+  line-height:2;
+  color:#555;
+  max-width:800px;
+  margin:15px auto;
 }
 
-.torr-card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+/* IMAGE BANNIÈRE */
 
-.torr-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a1f1b;
-  margin-bottom: 0.6rem;
+.torr-banner {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw; /* annule le centrage du parent */
+  margin-right: -50vw;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: 0 10px 35px rgba(0,0,0,.08);
 }
 
-.torr-card p { font-size: 0.875rem; color: #666; line-height: 1.7; }
-
-.torr-origins { text-align: center; }
-
-.torr-origins h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a1f1b;
-  margin-bottom: 1rem;
+.torr-banner img {
+  width: 100%;
+  height: 500px;
+  display: block;
+  object-fit: cover;
+  transition: .6s ease;
 }
 
-.torr-origin-tags {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
+
+.torr-banner:hover img{
+  transform:scale(1.05);
 }
 
-.torr-tag {
-  background: #f0f2ef;
-  color: #4a5c44;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border: 1px solid #d4dcce;
+/* CARTES */
+
+.torr-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-top:80px;
 }
 
-/* ── Torréfacteurs ── */
-.torrefacteurs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+.torr-card{
+  background:#f8f5ef;
+  border-radius:20px;
+  padding:35px;
+  text-align:center;
+  transition:.3s ease;
 }
 
-@media (max-width: 768px) { .torrefacteurs-grid { grid-template-columns: 1fr; } }
-
-.torrefacteur-card {
-  background: #fff;
-  border: 1px solid #e8e4dc;
-  border-radius: 14px;
-  padding: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.torr-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
 
-.torrefacteur-logo { font-size: 2rem; }
-
-.torrefacteur-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a1f1b;
+.torr-card h3{
+  margin-bottom:15px;
+  color:#5d654e;
+  font-size:1.15rem;
 }
 
-.torrefacteur-city {
-  font-size: 0.82rem;
-  color: #888;
+.torr-card p{
+  color:#666;
+  line-height:1.7;
+  font-size:.95rem;
 }
 
-.torrefacteur-desc {
-  font-size: 0.875rem;
-  color: #555;
-  line-height: 1.6;
-  flex: 1;
+/* ─────────────────────────
+   NOS TORRÉFACTEURS
+───────────────────────── */
+
+.torrefacteurs-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.2rem;
 }
 
-.torrefacteur-link {
-  font-size: 0.85rem;
-  color: #4a5c44;
-  font-weight: 600;
-  text-decoration: none;
+.torrefacteur-card{
+  background:#fff;
+  border:1px solid #e8e4dc;
+  border-radius:14px;
+  padding:1.8rem;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  transition:.3s ease;
 }
 
-.torrefacteur-link:hover { text-decoration: underline; }
+.torrefacteur-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.torrefacteur-logo{
+  font-size:2rem;
+}
+
+.torrefacteur-name{
+  font-size:1.1rem;
+  font-weight:700;
+  color:#1a1f1b;
+}
+
+.torrefacteur-city{
+  font-size:.82rem;
+  color:#888;
+}
+
+.torrefacteur-desc{
+  font-size:.875rem;
+  color:#555;
+  line-height:1.6;
+  flex:1;
+}
+
+.torrefacteur-link{
+  font-size:.85rem;
+  color:#4a5c44;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.torrefacteur-link:hover{
+  text-decoration:underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:900px){
+
+  .torr-cards{
+    grid-template-columns:1fr;
+  }
+
+  .torrefacteurs-grid{
+    grid-template-columns:1fr;
+  }
+
+  .torr-section h2{
+    font-size:2rem;
+  }
+}
 /* ══ Bottom section ══ */
 .cafe-bottom {
   margin-top: 4rem;
@@ -506,3 +556,159 @@
 }
 
 .cafe-cta-btn:hover { background: #5e6e47; }
+
+/* ── Carte images ── */
+.carte-images-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+
+  max-width: 1000px; /* AJOUTE ÇA */
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 900px) {
+  .carte-images-section {
+    grid-template-columns: 1fr;
+    
+  }
+}
+
+.carte-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  cursor: pointer;
+
+  background: #f5f0e8;
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.08);
+
+  transition: all .4s ease;
+}
+.carte-img-wrap:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.15);
+}
+.carte-img-wrap:hover .carte-menu-img {
+  transform: scale(1.08);
+}
+
+
+.carte-menu-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform .8s ease;
+}
+/* Overlay */
+
+.carte-img-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.45),
+    transparent 50%
+  );
+
+  opacity: 0;
+  transition: .4s;
+  z-index: 2;
+}
+
+.carte-img-wrap:hover::before {
+  opacity: 1;
+}
+
+/* Texte */
+
+.carte-img-wrap::after {
+  content: "Voir le menu";
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: .5px;
+
+  opacity: 0;
+  transition: .4s;
+
+  z-index: 3;
+}
+
+.carte-img-wrap:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+/* Cartes Nos torréfacteurs */
+.torr-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.torr-card {
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: transform .3s ease, box-shadow .3s ease;
+  border: 1px solid #e8e4dc;
+}
+
+/* Couleurs différentes pour chaque bloc */
+.torr-card:nth-child(1) {
+  background: #f8f5ef; /* beige clair */
+}
+
+.torr-card:nth-child(2) {
+  background: #f3e9db; /* beige moyen, plus chaud */
+}
+
+.torr-card:nth-child(3) {
+  background: #f8f5ef; /* beige clair à nouveau */
+}
+
+.torr-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.torr-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: #4a5c44;
+  margin-bottom: 1rem;
+}
+
+.torr-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7;
+}
+.torr-text {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .torr-cards {
+    grid-template-columns: 1fr;
+  }
+}

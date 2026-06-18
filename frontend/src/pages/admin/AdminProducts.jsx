@@ -8,7 +8,7 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 const h = () => ({ Authorization: `Bearer ${localStorage.getItem("token")}` });
 
 const CATEGORIES = ["Toutes les catégories", "Cup", "Chaussettes", "Tote bag", "Casquette", "Tee-shirt", "Accessoire"];
-const empty = { name: "", description: "", price: "", category: "", image: "", stock: "" };
+const empty = { name: "", description: "", price: "", category: "", image: "", stock: "", colors: [] };
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -52,7 +52,11 @@ export default function AdminProducts() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const payload = { ...form, price: Number(form.price), stock: Number(form.stock), type: "goodies" };
+      const payload = { ...form, price: Number(form.price), stock: Number(form.stock), colors: form.colors
+    .split(",")
+    .map(c => c.trim())
+    .filter(Boolean),
+  type: "goodies", type: "goodies" };
       if (editingId) {
         await axios.put(`${API}/products/${editingId}`, payload, { headers: h() });
       } else {
@@ -64,7 +68,9 @@ export default function AdminProducts() {
   };
 
   const handleEdit = (p) => {
-    setForm({ name: p.name, description: p.description || "", price: p.price, category: p.category || "", image: p.image || "", stock: p.stock || "" });
+    setForm({ name: p.name, description: p.description || "", price: p.price, category: p.category || "", image: p.image || "", stock: p.stock || "",colors: Array.isArray(p.colors)
+    ? p.colors.join(", ")
+    : p.colors || "" });
     setEditing(p._id);
     setModal(true);
   };
@@ -233,6 +239,21 @@ export default function AdminProducts() {
                     onChange={e => setForm({ ...form, stock: e.target.value })} min="0" />
                 </div>
               </div>
+
+              <div className="gd-fg">
+  <label>Couleurs</label>
+  <input
+    type="text"
+    placeholder="Noir, Blanc, Beige"
+    value={form.colors}
+    onChange={e =>
+      setForm({ ...form, colors: e.target.value })
+    }
+  />
+  <small>
+    Séparez les couleurs par une virgule
+  </small>
+</div>
 
               <div className="gd-fg">
                 <label>Description</label>

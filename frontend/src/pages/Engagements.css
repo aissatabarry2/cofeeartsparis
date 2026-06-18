@@ -1,0 +1,209 @@
+/* ══════════════════════════════════════════
+   Engagements — Coffee Arts Paris
+   ══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+.eng-page {
+  font-family: 'DM Sans', sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.eng-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ════════════════════════
+   SECTION 1 — Hero
+════════════════════════ */
+.eng-hero {
+  padding: 96px 0 64px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.eng-hero-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  color: #7a8a6a;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.eng-hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: #7a8a7b;
+  line-height: 1.7;
+}
+
+/* ════════════════════════
+   SECTION 2 — Nos valeurs (fond olive)
+════════════════════════ */
+.eng-valeurs {
+  background: #6b7a5a;
+  padding: 72px 0 80px;
+  text-align: center;
+}
+
+.eng-valeurs-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
+}
+
+.eng-valeurs-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 52px;
+}
+
+.eng-valeurs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.eng-valeur-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: background 0.22s;
+}
+
+.eng-valeur-card:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.eng-valeur-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.eng-valeur-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* ════════════════════════
+   SECTION 3 — Engagements écologiques
+════════════════════════ */
+.eng-eco {
+  background: #f5f4f0;
+  padding: 80px 0 96px;
+}
+
+.eng-eco-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 700;
+  color: #7a8a6a;
+  text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.eng-eco-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: #7a8a7b;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.eng-eco-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6b7a6e;
+  text-align: center;
+  line-height: 1.8;
+  max-width: 660px;
+  margin: 0 auto 52px;
+}
+
+/* Grid 2x2 */
+.eng-eco-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Card */
+.eng-eco-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 36px 40px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.22s, transform 0.22s;
+}
+
+.eng-eco-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+.eng-eco-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1f1b;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.eng-eco-card-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: #6b7a6e;
+  line-height: 1.75;
+  text-align: center;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.eng-eco-link {
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7a5a;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-align: center;
+  padding: 0;
+  transition: color 0.2s;
+  align-self: center;
+}
+
+.eng-eco-link:hover { color: #3d4a2e; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .eng-valeurs-grid { grid-template-columns: 1fr; gap: 14px; }
+  .eng-eco-grid     { grid-template-columns: 1fr; }
+  .eng-container    { padding: 0 20px; }
+  .eng-eco-card     { padding: 28px 24px; }
+  .eng-hero         { padding: 72px 0 48px; }
+}

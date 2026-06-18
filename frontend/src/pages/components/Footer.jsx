@@ -90,10 +90,10 @@ const Footer = () => {
             </p>
 
             <div className="payment-icons">
-              <span>Mastercard</span>
-              <span>Visa</span>
-              <span>GPay</span>
-              <span>Apple Pay</span>
+              <img src="/mastercard-png-8.png" alt="Mastercard" className="mastercard-icon" />
+              <img src="/visa-logo-png-transparent.png" alt="Visa" className="visa-icon" />
+              <img src="/Google_Pay_Logo.svg.webp" alt="GPay" className="gpays-icon" />
+              <img src="/Apple_Pay-Logo.wine.png" alt="Apple Pay" className="applepay-icon" />
             </div>
 
             <div className="legal-links">
