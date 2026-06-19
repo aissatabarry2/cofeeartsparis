@@ -70,10 +70,10 @@ const Footer = () => {
             <p>© 2026 Coffee Arts Paris. Tous droits réservés.</p>
 
             <div className="payment-icons">
-              <img src={`${PUB}/mastercard-png-8.png`}               alt="Mastercard" className="mastercard-icon" />
-              <img src={`${PUB}/visa-logo-png-transparent.png`}       alt="Visa"       className="visa-icon" />
-              <img src={`${PUB}/Google_Pay_Logo.svg.webp`}            alt="GPay"       className="gpays-icon" />
-              <img src={`${PUB}/Apple_Pay-Logo.wine.png`}             alt="Apple Pay"  className="applepay-icon" />
+              <img src={`${PUB}/mastercard.png`}  alt="Mastercard" className="mastercard-icon" />
+              <img src={`${PUB}/visa.png`}        alt="Visa"       className="visa-icon" />
+              <img src={`${PUB}/gpay.webp`}       alt="GPay"       className="gpays-icon" />
+              <img src={`${PUB}/applepay.png`}    alt="Apple Pay"  className="applepay-icon" />
             </div>
 
             <div className="legal-links">
