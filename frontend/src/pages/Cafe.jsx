@@ -42,10 +42,10 @@ export default function Cafe() {
     {/* Images du menu */}
     <div className="carte-images-section">
       <div className="carte-img-wrap">
-        <img src="/MENU PARTIE 1.jpg" alt="Menu Café & Matcha" className="carte-menu-img" />
+        <img src="/menu-partie1.jpg" alt="Menu Café & Matcha" className="carte-menu-img" />
       </div>
       <div className="carte-img-wrap">
-        <img src="/MENU PARTIE 2.jpg" alt="Menu Pastry & Snack" className="carte-menu-img" />
+        <img src="/menu-partie2.jpg" alt="Menu Pastry & Snack" className="carte-menu-img" />
       </div>
     </div>
 
