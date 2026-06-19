@@ -2,6 +2,8 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { ShoppingBag, Coffee } from "lucide-react";
 
+const logo = process.env.PUBLIC_URL + "/logo.png";
+
 export default function Navbar() {
   return (
     <nav className="navbar">
@@ -14,7 +16,9 @@ export default function Navbar() {
       </div>
 
       <div className="nav-logo">
-        <img src="/logo.png" alt="Coffee Arts" />
+        <Link to="/">
+          <img src={logo} alt="Coffee Arts Paris" />
+        </Link>
       </div>
 
       <div className="nav-right">
@@ -22,14 +26,12 @@ export default function Navbar() {
         <Link to="/nos-engagements">Nos engagements</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/login">Espace client</Link>
-        
 
         <div className="nav-icons">
-          <button>
+          <button aria-label="Panier">
             <ShoppingBag size={18} />
           </button>
-
-          <button>
+          <button aria-label="Café">
             <Coffee size={18} />
           </button>
         </div>
