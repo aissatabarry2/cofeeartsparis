@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Cafe.css";
 
 const TABS = ["La carte", "Torréfaction", "Nos torréfacteurs"];
+const PUB = process.env.PUBLIC_URL;
 
 
 
@@ -42,10 +43,10 @@ export default function Cafe() {
     {/* Images du menu */}
     <div className="carte-images-section">
       <div className="carte-img-wrap">
-        <img src="/menu-partie1.jpg" alt="Menu Café & Matcha" className="carte-menu-img" />
+        <img src={`${PUB}/menu-partie1.jpg`} alt="Menu Café & Matcha" className="carte-menu-img" />
       </div>
       <div className="carte-img-wrap">
-        <img src="/menu-partie2.jpg" alt="Menu Pastry & Snack" className="carte-menu-img" />
+        <img src={`${PUB}/menu-partie2.jpg`} alt="Menu Pastry & Snack" className="carte-menu-img" />
       </div>
     </div>
 
@@ -125,7 +126,7 @@ export default function Cafe() {
 
     {/* IMAGE BANNIÈRE */}
     <div className="torr-banner">
-      <img src="/new.png" alt="Torréfaction" />
+      <img src={`${PUB}/new.png`} alt="Torréfaction" />
     </div>
 
     {/* Extraction */}

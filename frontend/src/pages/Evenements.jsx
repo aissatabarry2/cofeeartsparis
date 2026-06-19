@@ -24,6 +24,8 @@ const EVENTS = [
   },
 ];
 
+const PUB = process.env.PUBLIC_URL;
+
 export default function Evenements() {
   const navigate = useNavigate();
 
@@ -52,7 +54,7 @@ export default function Evenements() {
       {/* ── SECTION 2 : Image pleine largeur ── */}
       <section className="ev-banner">
         <img
-          src="/EVENEMENTS - PHOTO 1.jpg"
+          src={`${PUB}/evenements-photo1.jpg`}
           alt="Céramique Coffee Arts Paris"
           className="ev-banner-img"
         />

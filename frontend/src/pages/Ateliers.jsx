@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Ateliers.css";
 
 const API = process.env.REACT_APP_API_URL;
+const PUB = process.env.PUBLIC_URL;
 
 const TABS = [
   {
@@ -84,7 +85,7 @@ export default function Ateliers() {
 
       {/* ── HERO ── */}
       <div className="at-hero"
-      style={{ backgroundImage: "url('/atelier-hero.png')" }}>
+      style={{ backgroundImage: `url('${PUB}/atelier-hero.png')` }}>
         <div className="at-hero-overlay" />
         <div className="at-hero-content">
           <h1 className="at-hero-title">Nos <em>ateliers</em></h1>
@@ -197,7 +198,7 @@ export default function Ateliers() {
       <div className="at-ideas">
         <h2 className="at-ideas-title">Envie de nouvelles idées ?</h2>
         <div className="at-ideas-photos">
-          {["/atelier1.jpg", "/atelier2.jpg", "/atelier3.jpg"].map((src, i) => (
+          {[`${PUB}/atelier1.jpg`, `${PUB}/atelier2.jpg`, `${PUB}/atelier3.jpg`].map((src, i) => (
             <div key={i} className="at-ideas-photo">
               <img src={src} alt={`inspiration ${i+1}`}
                 onError={e => { e.target.parentElement.style.background = "#e8e4dc"; e.target.style.display = "none"; }}
@@ -213,7 +214,7 @@ export default function Ateliers() {
             <p>Que vous veniez pour la première fois ou que vous ayez déjà pratiqué, l'accompagnement se fait pas à pas, dans une ambiance bienveillante et créative.</p>
           </div>
           <div className="at-ideas-img">
-            <img src="/atelier-studio.jpg" alt="Studio"
+            <img src={`${PUB}/atelier-studio.jpg`} alt="Studio"
               onError={e => { e.target.parentElement.style.background = "#d4c9b8"; e.target.style.display="none"; }}
             />
           </div>
@@ -235,7 +236,7 @@ export default function Ateliers() {
 
       {/* ── GALERIE bas de page ── */}
       <div className="at-gallery">
-        {["/g1.jpg","/g2.png","/g3.png","/g4.jpg"].map((src, i) => (
+        {[`${PUB}/g1.jpg`, `${PUB}/g2.png`, `${PUB}/g3.png`, `${PUB}/g4.jpg`].map((src, i) => (
           <div key={i} className="at-gallery-item">
             <img src={src} alt={`galerie ${i+1}`}
               onError={e => { e.target.parentElement.style.background = "#c8c0b0"; e.target.style.display="none"; }}
