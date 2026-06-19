@@ -3,76 +3,10 @@ import "./Cafe.css";
 
 const TABS = ["La carte", "Torréfaction", "Nos torréfacteurs"];
 
-const CARTE_DATA = [
-  {
-    section: "CAFÉ",
-    color: "#5c6b3a",
-    items: [
-      { name: "DECA",             price: "3,00€" },
-      { name: "EXPRESSO / DOUBLE",price: "2,50 / 3,00€" },
-      { name: "AMERICANO",        price: "4,00€" },
-      { name: "FLAT WHITE",       price: "5,50€" },
-      { name: "CORTADO",          price: "3,50€" },
-      { name: "CAPPUCINO",        price: "5,50€" },
-      { name: "LATTE",            price: "6,00€" },
-      { name: "MOCCA",            price: "6,50€" },
-    ],
-    signatures: [
-      { name: "PISTACHIO LATTE",    note: "Servi froid",    price: "7,50€" },
-      { name: "CHERRY ICED LATTE",  note: "Servi froid",    price: "6,50€" },
-      { name: "CINNAMON LATTE",     note: "Servi chaud",    price: "7,50€" },
-      { name: "SPARKLING LATTE",    note: "Servi froid",    price: "6,50€" },
-      { name: "UBE LATTE",          note: "Servi chaud",    price: "6,50€" },
-      { name: "BANANA BREAD LATTE", note: "Servi chaud",    price: "8,00€" },
-      { name: "ICED TIRAMISU COFFEE",note: "Servi froid",   price: "9,50€" },
-    ],
-    laitVegetal: "Lait d'avoine · coco/amande + 0,50€",
-  },
-  {
-    section: "MATCHA",
-    color: "#7a9a3a",
-    items: [
-      { name: "MATCHA LATTE",       price: "6,50€" },
-      { name: "ICED MATCHA LATTE",  price: "7,00€" },
-      { name: "MATCHA SIGNATURE",   price: "7,50€" },
-    ],
-  },
-  {
-    section: "BRUNCH",
-    color: "#8b7355",
-    items: [
-      { name: "SHAKSHUKA DU CHEF",     price: "15,50€", desc: "Servis avec œuf poché pain de campagne, féta et coriandre. Allergène : œuf, lait et gluten" },
-      { name: "BUNS CHAMPIGNON ÉPINARD",price: "14,00€", desc: "champignons poêlés et épinards frais, servi sur un houmous de betterave. Allergène : Gluten, sésame" },
-    ],
-    supplements: [
-      { name: "OEUF POCHÉ",  price: "+ 2,50€" },
-      { name: "HALLOUMI",    price: "+ 3,50€" },
-      { name: "SAUMON",      price: "+ 4,50€" },
-    ],
-  },
-];
 
-const TORREFACTION = [
-  {
-    title: "Notre philosophie",
-    content: "Nous sélectionnons nos cafés avec soin auprès de torréfacteurs engagés, qui travaillent en direct avec les producteurs. Chaque grain raconte une histoire, un terroir, une saison."
-  },
-  {
-    title: "Traçabilité",
-    content: "Tous nos cafés sont tracés de la ferme à la tasse. Nous privilégions les coopératives à impact social positif et les méthodes de traitement respectueuses de l'environnement."
-  },
-  {
-    title: "Notre sélection",
-    content: "Éthiopie Yirgacheffe · Colombie Huila · Brésil Cerrado · Guatemala Antigua. Chaque café est torréfié light à medium pour révéler toute sa complexité aromatique."
-  },
-];
 
-const TORREFACTEURS = [
-  { name: "Café Lomi", city: "Paris, France",    desc: "Torréfacteur artisanal parisien, pionnier du café de spécialité en France.", site: "cafelomi.com" },
-  { name: "Hard Beans", city: "Opole, Pologne",  desc: "Lauréats de multiples récompenses, spécialisés dans les micro-lots d'exception.", site: "hardbeans.pl" },
-  { name: "The Barn",   city: "Berlin, Allemagne",desc: "L'une des références européennes du café de spécialité, torréfaction légère.", site: "thebarn.de" },
-  { name: "Mana Coffee", city: "Budapest, Hongrie",desc: "Approche minimaliste et rigoureuse, cafés naturels et lavés.", site: "manacoffee.hu" },
-];
+
+
 
 export default function Cafe() {
   const [activeTab, setTab] = useState("La carte");

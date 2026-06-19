@@ -56,7 +56,7 @@ export default function AdminProducts() {
     .split(",")
     .map(c => c.trim())
     .filter(Boolean),
-  type: "goodies", type: "goodies" };
+  type: "goodies", subtype: "goodies" };
       if (editingId) {
         await axios.put(`${API}/products/${editingId}`, payload, { headers: h() });
       } else {

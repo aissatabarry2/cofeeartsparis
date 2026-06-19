@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useCart } from "../context/CartContext";
+// eslint-disable-next-line no-unused-vars
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Boutique.css";
 

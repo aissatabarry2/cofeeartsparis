@@ -46,6 +46,7 @@ const ENGAGEMENTS = [
 
 export default function Engagements() {
   const [expanded, setExpanded] = useState({});
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
 
   const toggle = (key) =>
