@@ -4,7 +4,7 @@ exports.getAllProducts = async (req, res) => {
   try {
     const { category } = req.query;
     const filter = category ? { category } : {};
-    const products = await Product.find(filter);
+    const products = await Product.find(filter).sort({ createdAt: -1 });
     res.json(products);
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
