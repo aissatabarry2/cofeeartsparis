@@ -31,7 +31,6 @@ import AdminLayout from "./pages/components/admin/AdminLayout";
 import Navbar from "./pages/components/Navbar";
 import Footer from "./pages/components/Footer";
 import HeroSection from "./pages/components/HeroSection";
-import MenuSection from "./pages/components/MenuSection";
 import VisitSection from "./pages/components/VisitSection";
 
 function AdminRoute({ children }) {
@@ -66,7 +65,6 @@ export default function App() {
               element={
                 <>
                   <HeroSection />
-                  <MenuSection />
                   <VisitSection />
                   <Home />
                 </>
