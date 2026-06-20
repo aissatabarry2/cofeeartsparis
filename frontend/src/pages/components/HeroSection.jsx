@@ -1,7 +1,10 @@
 import React from "react";
 import "./HeroSection.css";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="hero">
 
@@ -27,11 +30,11 @@ const HeroSection = () => {
 
         <div className="hero-buttons">
 
-          <button className="btn-primary">
+          <button className="btn-primary" onClick={() => navigate("/ateliers")}>
             Réserver un atelier
           </button>
 
-          <button className="btn-secondary">
+          <button className="btn-secondary" onClick={() => navigate("/carte")}>
             Découvrir la carte
           </button>
 

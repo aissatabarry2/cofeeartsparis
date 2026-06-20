@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Cafe.css";
+import { useNavigate } from "react-router-dom";
 
 const TABS = ["La carte", "Torréfaction", "Nos torréfacteurs"];
 const PUB = process.env.PUBLIC_URL;
@@ -10,6 +11,7 @@ const PUB = process.env.PUBLIC_URL;
 
 
 export default function Cafe() {
+  const navigate = useNavigate();
   const [activeTab, setTab] = useState("La carte");
 
   return (
@@ -87,7 +89,9 @@ export default function Cafe() {
         <p className="cafe-cta-sub">
           Toutes les informations pour venir découvrir le café.
         </p>
-        <button className="cafe-cta-btn">Nous rendre visite</button>
+        <button className="cafe-cta-btn" onClick={() => navigate("/contact")}>
+          Nous rendre visite
+        </button>
       </div>
     </div>
   </>
