@@ -3,15 +3,17 @@
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
       "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*\\.(png|jpg|jpeg|webp|svg|ico|json|txt))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
