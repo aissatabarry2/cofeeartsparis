@@ -5,7 +5,6 @@ import { CartProvider } from "./context/CartContext";
 
 
 
-import Home from "./pages/Home";
 import Boutique from "./pages/Boutique";
 import Ateliers from "./pages/Ateliers";
 import Contact from "./pages/Contact";
@@ -66,7 +65,6 @@ export default function App() {
                 <>
                   <HeroSection />
                   <VisitSection />
-                  <Home />
                 </>
               }
             />
