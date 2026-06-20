@@ -1,0 +1,529 @@
+/* ══════════════════════════════════════════
+   Home — Coffee Arts Paris (post-hero sections)
+   ══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+.hm-page {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+}
+
+.hm-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.hm-section-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.hm-section-header h2 {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #5c6b47;
+  margin-bottom: 10px;
+}
+
+.hm-section-header p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6b7a6e;
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ════════════════════════
+   1. TROIS EXPÉRIENCES
+════════════════════════ */
+.hm-exp {
+  padding: 72px 0 64px;
+  background: #fff;
+}
+
+.hm-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.hm-exp-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+.hm-exp-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.hm-exp-card:hover img { transform: scale(1.06); }
+
+.hm-exp-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
+}
+
+.hm-exp-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+}
+
+.hm-exp-overlay h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.hm-exp-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: #f0ece4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ════════════════════════
+   2. GALERIE
+════════════════════════ */
+.hm-gallery-section {
+  background: #f5ede0;
+  padding: 72px 0 80px;
+}
+
+.hm-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 180px);
+  gap: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.hm-gallery-item {
+  overflow: hidden;
+  background: #e8e0d0;
+}
+
+.hm-gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.hm-gallery-item:hover img { transform: scale(1.08); }
+
+/* ════════════════════════
+   3. PRODUITS
+════════════════════════ */
+.hm-products {
+  padding: 72px 0 80px;
+  background: #fff;
+}
+
+.hm-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.hm-products-empty {
+  text-align: center;
+  color: #aaa;
+  padding: 40px;
+}
+
+.hm-product-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.hm-product-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f0ece4;
+  margin-bottom: 16px;
+}
+
+.hm-product-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.hm-product-card:hover .hm-product-img-wrap img { transform: scale(1.05); }
+
+.hm-product-img-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+}
+
+.hm-product-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.hm-product-top h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1f1b;
+  line-height: 1.3;
+}
+
+.hm-product-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1f1b;
+  white-space: nowrap;
+}
+
+.hm-product-desc {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.hm-product-sep {
+  height: 1px;
+  background: #e8e4dc;
+  margin-bottom: 12px;
+}
+
+.hm-product-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5c6b47;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ════════════════════════
+   4. INSTAGRAM (mockup)
+════════════════════════ */
+.hm-instagram {
+  padding: 72px 0 88px;
+  background: #fff;
+  text-align: center;
+}
+
+.hm-insta-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #8a9a6a;
+  color: #fff;
+  border-radius: 100px;
+  padding: 11px 26px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 36px;
+  transition: all 0.2s;
+}
+.hm-insta-btn:hover { background: #6b7a4e; }
+
+.hm-insta-mock {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #ebe8e2;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+.hm-insta-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+.hm-insta-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fcaf45, #e1306c, #833ab4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.hm-insta-account {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  flex: 1;
+}
+.hm-insta-account strong { font-size: 13px; color: #1a1f1b; }
+.hm-insta-account span { font-size: 11px; color: #888; }
+.hm-insta-stats { color: #aaa !important; }
+
+.hm-insta-ico { font-size: 18px; color: #c13584; }
+
+.hm-insta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.hm-insta-tile {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ════════════════════════
+   5. CTA BANDEAU
+════════════════════════ */
+.hm-cta {
+  padding: 88px 24px;
+  background: linear-gradient(180deg, #faf8f4 0%, #f0ede5 100%);
+  text-align: center;
+}
+
+.hm-cta-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  color: #4a5532;
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+
+.hm-cta-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6b7a6e;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hm-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hm-cta-btn-green {
+  padding: 13px 28px;
+  border-radius: 100px;
+  border: none;
+  background: #5c6b47;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.hm-cta-btn-green:hover { background: #4a5532; transform: translateY(-2px); }
+
+.hm-cta-btn-beige {
+  padding: 13px 28px;
+  border-radius: 100px;
+  border: none;
+  background: #e5d1b6;
+  color: #4d473f;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.hm-cta-btn-beige:hover { background: #d9c4a3; transform: translateY(-2px); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hm-exp-grid      { grid-template-columns: 1fr; gap: 14px; }
+  .hm-products-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hm-gallery-grid  { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 160px); }
+  .hm-insta-grid    { grid-template-columns: repeat(3, 1fr); }
+  .hm-container     { padding: 0 20px; }
+}
+
+/* ══ INSTAGRAM SECTION ══ */
+.hm-instagram {
+  padding: 3rem 0 0;
+  background: #fff;
+}
+
+.hm-insta-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Profil header */
+.hm-insta-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 0.2rem;
+}
+
+/* Avatar avec dégradé Instagram */
+.hm-insta-avatar-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  padding: 2.5px;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%, #e6683c 25%,
+    #dc2743 50%, #cc2366 20%, #bc1888 100%
+  );
+  flex-shrink: 0;
+}
+
+.hm-insta-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #fff;
+  display: block;
+}
+
+/* Account info */
+.hm-insta-account {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+.hm-insta-handle {
+  font-size: 0.82rem;
+  color: #333;
+  font-weight: 400;
+}
+
+.hm-insta-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1f1b;
+}
+
+.hm-insta-followers {
+  font-size: 0.78rem;
+  color: #888;
+  display: inline;
+}
+
+.hm-insta-pubs {
+  font-size: 0.78rem;
+  color: #888;
+  display: inline;
+  margin-left: 4px;
+}
+
+/* Icône Instagram lien */
+.hm-insta-icon-link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%, #e6683c 25%,
+    #dc2743 50%, #cc2366 75%, #bc1888 100%
+  );
+  color: #fff;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.hm-insta-icon-link:hover { opacity: 0.85; }
+
+.hm-insta-svg {
+  width: 18px;
+  height: 18px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+/* Grille photos */
+.hm-insta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.hm-insta-tile {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #e0dbd2;
+  display: block;
+}
+
+.hm-insta-tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.hm-insta-tile:hover .hm-insta-tile-img {
+  transform: scale(1.04);
+  filter: brightness(0.85);
+}
+
+/* Overlay au hover */
+.hm-insta-tile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+  background: rgba(0,0,0,0.15);
+}
+
+.hm-insta-tile:hover .hm-insta-tile-overlay { opacity: 1; }
+
+.hm-insta-tile-ico {
+  width: 28px;
+  height: 28px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
